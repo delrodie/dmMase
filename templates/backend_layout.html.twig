@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <meta name="description" content="MASE Côte d'Ivoire website backend">
+        <meta name="author" content="Dream Maker, Delrodie AMOIKON">
+
+        <title>{% block title %}BACKEND::{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ absolute_url(asset('backoffice/vendor/fontawesome/css/all.css')) }}" rel="stylesheet">
+            <link href="{{ absolute_url(asset('backoffice/vendor/ionicons/css/ionicons.min.css')) }}" rel="stylesheet">
+            <link href="{{ absolute_url(asset('backoffice/vendor/typicons/font/typicons.min.css')) }}" rel="stylesheet">
+
+            <link rel="stylesheet" href="{{ absolute_url(asset('backoffice/css/style.css')) }}">
+        {% endblock %}
+    </head>
+    <body>
+        <div class="az-header">
+            <div class="container">
+                <div class="az-header-left">
+                    <a href="#" class="az-logo"><span></span> BACKEND</a>
+                    <a href="#" id="azMenuShow" class="az-header-menu-icon d-lg-none"><span></span></a>
+                </div>
+                <div class="az-header-menu">
+                    <div class="az-header-menu-header">
+                        <a href="#" class="az-logo"><span></span> BACKEND</a>
+                        <a href="#" class="close">&times;</a>
+                    </div>
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Tableau de bord</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link with-sub"><i class="typcn typcn-folder"></i> Accueil</a>
+                            <nav class="az-menu-sub">
+                                <a href="#" class="nav-link">Slide</a>
+                                <a href="#" class="nav-link">Agenda</a>
+                                <a href="#" class="nav-link">Mission</a>
+                                <a href="#" class="nav-link">Foire aux questions</a>
+                                <a href="#" class="nav-link">Retour d'expériences</a>
+                            </nav>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link with-sub"><i class="typcn typcn-document"></i> L'association</a>
+                            <nav class="az-menu-sub">
+                                <a href="#" class="nav-link">Qui sommes-nous?</a>
+                                <a href="#" class="nav-link">Historique</a>
+                                <a href="#" class="nav-link">La presse parle de nous</a>
+                                <a href="#" class="nav-link">Statut</a>
+                                <a href="#" class="nav-link">Règlements</a>
+                                <a href="#" class="nav-link">Conseil d'administration</a>
+                                <a href="#" class="nav-link">Comité de pilotage</a>
+                                <a href="#" class="nav-link">Document</a>
+                            </nav>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"><i class="typcn typcn-book"></i> Actualités</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link with-sub"><i class="typcn typcn-tabs-outline"></i> Pages</a>
+                            <nav class="az-menu-sub">
+                                <a href="#" class="nav-link">Referentiel</a>
+                                <a href="#" class="nav-link">Base Form</a>
+                                <a href="#" class="nav-link">Galerie</a>
+                                <a href="#" class="nav-link">Contact</a>
+                            </nav>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link with-sub"><i class="typcn typcn-cog"></i> Administration</a>
+                            <nav class="az-menu-sub">
+                                <a href="#" class="nav-link">Utilisateurs</a>
+                            </nav>
+                        </li>
+                    </ul>
+                </div>
+                <div class="az-header-right">
+
+
+                    <div class="dropdown az-profile-menu">
+                        <a href="#" class="az-img-user"><img src="{{ absolute_url(asset('backoffice/images/avatar.png')) }}" alt=""></a>
+                        <div class="dropdown-menu">
+
+                            <a href="#" class="dropdown-item"><i class="typcn typcn-time"></i> Mes actions</a>
+                            <a href="#" class="dropdown-item"><i class="typcn typcn-cog-outline"></i> Changer mon mot de passe</a>
+                            <a href="#" class="dropdown-item"><i class="typcn typcn-power-outline"></i> Deconnexion</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% block body %}{% endblock %}
+        <div class="az-footer ht-40">
+            <div class="container-fluid pd-t-0-f ht-100p">
+                <span>&copy; 2020 Dream Maker  </span>
+            </div>
+        </div>
+        {% block javascripts %}
+            <script src="{{ absolute_url(asset('backoffice/js/jquery.min.js')) }}"></script>
+            <script src="{{ absolute_url(asset('backoffice/js/datepicker.js')) }}"></script>
+            <script src="{{ absolute_url(asset('backoffice/js/bootstrap.bundle.min.js')) }}"></script>
+            <script src="{{ absolute_url(asset('backoffice/vendor/ionicons/js/ionicons.js')) }}"></script>
+
+            <script src="{{ absolute_url(asset('backoffice/js/app.js')) }}"></script>
+            <script>
+                $(function(){
+                    'use strict'
+
+                    // Datepicker found in left sidebar of the page
+                    var highlightedDays = ['2018-5-10','2018-5-11','2018-5-12','2018-5-13','2018-5-14','2018-5-15','2018-5-16'];
+                    var date = new Date();
+
+                    $('.fc-datepicker').datepicker({
+                        showOtherMonths: true,
+                        selectOtherMonths: true,
+                        dateFormat: 'yy-mm-dd',
+                        language: 'fr_FR',
+                        beforeShowDay: function(date) {
+                            var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+                            for (var i = 0; i < highlightedDays.length; i++) {
+                                if($.inArray(y + '-' + (m+1) + '-' + d,highlightedDays) != -1) {
+                                    return [true, 'ui-date-highlighted', ''];
+                                }
+                            }
+                            return [true];
+                        }
+                    });
+
+
+                });
+            </script>
+        {% endblock %}
+    </body>
+</html>
