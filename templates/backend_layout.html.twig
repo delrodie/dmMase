@@ -20,22 +20,22 @@
         <div class="az-header">
             <div class="container">
                 <div class="az-header-left">
-                    <a href="#" class="az-logo"><span></span> BACKEND</a>
+                    <a href="{{ path('app_dashbord') }}" class="az-logo"><span></span> BACKEND</a>
                     <a href="#" id="azMenuShow" class="az-header-menu-icon d-lg-none"><span></span></a>
                 </div>
                 <div class="az-header-menu">
                     <div class="az-header-menu-header">
-                        <a href="#" class="az-logo"><span></span> BACKEND</a>
+                        <a href="{{ path('app_dashbord') }}" class="az-logo"><span></span> BACKEND</a>
                         <a href="#" class="close">&times;</a>
                     </div>
                     <ul class="nav">
                         <li class="nav-item">
-                            <a href="#" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Tableau de bord</a>
+                            <a href="{{ path('app_dashbord') }}" class="nav-link"><i class="typcn typcn-chart-area-outline"></i> Tableau de bord</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link with-sub"><i class="typcn typcn-folder"></i> Accueil</a>
                             <nav class="az-menu-sub">
-                                <a href="#" class="nav-link">Slide</a>
+                                <a href="{{ path('backend_slider_index') }}" class="nav-link">Slide</a>
                                 <a href="#" class="nav-link">Agenda</a>
                                 <a href="#" class="nav-link">Mission</a>
                                 <a href="{{ path('backend_faq_index') }}" class="nav-link">Foire aux questions</a>
