@@ -1,0 +1,26 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-md-10 offset-1">
+        <div class="row form-group d-md-flex">
+            <div class="col-md-12 mg-b-20">
+                {{ form_widget(form.contenu) }}
+            </div>
+        </div>
+        <div class="row form-group d-md-flex">
+            <div class="col-md-12 mg-b-20">
+                <img class="preview" />
+                <div class="custom-file">
+                    {{ form_widget(form.media) }}
+                    <label class="custom-file-label" for="customFile">Télécharger la photo</label>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group d-md-flex">
+            <div class="col-md-12 mg-b-20 text-right">
+                {{ form_widget(form) }}
+                <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> &nbsp; {{ button_label|default('Enregistrer') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}

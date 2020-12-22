@@ -124,8 +124,12 @@ class SliderController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$slider->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+            $file = $slider->getMedia();
             $entityManager->remove($slider);
             $entityManager->flush();
+
+            // Supression de l'ancien fichier
+            $this->gestionMedia->removeUpload($file, 'slide');
 
             $this->addFlash('success', "<strong>Succes!</strong> Le slide a bien été enregistré!");
         }

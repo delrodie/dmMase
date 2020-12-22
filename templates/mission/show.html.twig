@@ -1,0 +1,56 @@
+{% extends 'backend_layout.html.twig' %}
+
+{% block title %}{{ parent() }} Gestion des missions{% endblock %}
+
+{% block body %}
+    <div class="az-content pd-y-20 pd-lg-y-30 pd-xl-y-40">
+        <div class="container">
+            <div class="az-content-left az-content-left-components">
+                {{ include('dashbord/menu_accueil.html.twig') }}
+
+            </div>
+            <div class="az-content-body pd-lg-l-40 d-flex flex-column">
+                <div class="az-content-breadcrumb">
+                    <span>Backoffice</span>
+                    <span>Accueil</span>
+                    <span>Mission</span>
+                </div>
+                <h2 class="az-content-title">Gestion des missions</h2>
+
+                <div class="az-content-label mg-b-5"></div>
+
+                <div class="mb-5 text-right">
+                    <a href="{{ path('backend_mission_index') }}" class="btn btn-outline-primary"><i class="fa fa-list"></i> &nbsp;Liste</a>
+                </div>
+
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{message|raw}}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+                <p class="mg-b-20 text-justify">
+                    <img src="{{ absolute_url(asset('uploads/mission/'~ mission.media)) }}" alt="" class="img-thumbnail" width="40%" style="float: left; margin-right: 20px; margin-bottom: 5px;">
+                    {{ mission.contenu|raw }}
+                </p>
+
+                <div class="row mt-5">
+                    <div class="col-sm-2 offset-8 text-right">
+                        <a href="{{ path('backend_mission_edit', {'id': mission.id}) }}" class="btn btn-primary"><i class="fa fa-edit"></i>Modifier</a>
+                    </div>
+                    <div class="col-sm-2 text-left">
+                        {{ include('mission/_delete_form.html.twig') }}
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
