@@ -13,12 +13,14 @@ class GestionMedia
     private $mediaSlide;
     private $mediaMission;
     private $mediaAgenda;
+    private $mediaRex;
 
-    public function __construct($slideDirectory, $missionDirectory, $agendaDirectory)
+    public function __construct($slideDirectory, $missionDirectory, $agendaDirectory, $rexDirectory)
     {
         $this->mediaSlide = $slideDirectory;
         $this->mediaMission = $missionDirectory;
         $this->mediaAgenda = $agendaDirectory;
+        $this->mediaRex = $rexDirectory;
     }
 
     /**
@@ -42,6 +44,7 @@ class GestionMedia
             if ($media === 'slide') $file->move($this->mediaSlide, $newFilename);
             elseif ($media === 'mission') $file->move($this->mediaMission, $newFilename);
             elseif ($media === 'agenda') $file->move($this->mediaAgenda, $newFilename);
+            elseif ($media === 'rex') $file->move($this->mediaRex, $newFilename);
             else $file->move($this->mediaSlide, $newFilename);
         }catch (FileException $e){
 
@@ -62,6 +65,7 @@ class GestionMedia
         if ($media === 'slide') unlink($this->mediaSlide.'/'.$ancienMedia);
         if ($media === 'mission') unlink($this->mediaMission.'/'.$ancienMedia);
         if ($media === 'agenda') unlink($this->mediaAgenda.'/'.$ancienMedia);
+        if ($media === 'rex') unlink($this->mediaRex.'/'.$ancienMedia);
         else return false;
 
         return true;

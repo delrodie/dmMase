@@ -36,3 +36,4 @@ services:
             $slideDirectory: '%kernel.project_dir%/public/uploads/Slides'
             $missionDirectory: '%kernel.project_dir%/public/uploads/mission'
             $agendaDirectory: '%kernel.project_dir%/public/uploads/agenda'
+            $rexDirectory: '%kernel.project_dir%/public/uploads/rex'
