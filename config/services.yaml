@@ -35,3 +35,4 @@ services:
         arguments:
             $slideDirectory: '%kernel.project_dir%/public/uploads/Slides'
             $missionDirectory: '%kernel.project_dir%/public/uploads/mission'
+            $agendaDirectory: '%kernel.project_dir%/public/uploads/agenda'

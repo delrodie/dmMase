@@ -1,0 +1,75 @@
+{% extends 'backend_layout.html.twig' %}
+
+{% block title %}{{ parent() }} Gestion des agendas{% endblock %}
+
+{% block body %}
+    <div class="az-content pd-y-20 pd-lg-y-30 pd-xl-y-40">
+        <div class="container">
+            <div class="az-content-left az-content-left-components">
+                {{ include('dashbord/menu_accueil.html.twig') }}
+
+            </div>
+            <div class="az-content-body pd-lg-l-40 d-flex flex-column">
+                <div class="az-content-breadcrumb">
+                    <span>Backoffice</span>
+                    <span>Accueil</span>
+                    <span>Agenda</span>
+                </div>
+                <h2 class="az-content-title">Gestion des agendas</h2>
+
+                <div class="az-content-label mg-b-5"></div>
+                <p class="mg-b-20"></p>
+
+                <div class="mb-5 text-right">
+                    <a href="{{ path('backend_agenda_new') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Ajouter</a>
+                </div>
+
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{message|raw}}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+                <div class="table-responsive">
+                    <table class="table table-hover mg-b-0">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Titres</th>
+                            <th>Periodes</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for agenda in agendas %}
+                            <tr>
+                                <th scope="row">{{ loop.index }}</th>
+                                <td>
+                                    <a href="#" data-toggle="modal" data-target="#slide{{ agenda.id }}">{{ agenda.titre }}</a>
+                                </td>
+                                <td>{{ agenda.dateDebut|date('d/m/Y') }} - {{ agenda.dateFin|date('d/m/Y') }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="4" class="text-center" style="font-size: 1.3rem;">
+                                    <em> Aucun agenda</em>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% for agenda in agendas %}
+        <div id="slide{{ agenda.id }}" class="modal">
+            {{ render(url('backend_agenda_show',{'id':agenda.id})) }}
+        </div>
+    {% endfor %}
+{% endblock %}

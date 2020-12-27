@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('backend_agenda_delete', {'id': agenda.id}) }}" onsubmit="return confirm('VOulez-vous vraiment supprimer cet agenda?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ agenda.id) }}">
+    <button class="btn btn-danger">Supprimer</button>
+</form>
