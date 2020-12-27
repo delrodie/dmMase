@@ -21,7 +21,6 @@ class MissionType extends AbstractType
                 'label' => "Télécharger la photo",
                 'mapped' => false,
                 'multiple' => false,
-                'required' => true,
                 'constraints' => [
                     new File([
                         'maxSize' => "1000000k",

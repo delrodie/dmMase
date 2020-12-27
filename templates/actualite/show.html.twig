@@ -1,0 +1,21 @@
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+            <h6 class="modal-title">{{ actualite.titre }}</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p class="text-justify">
+                <img src="{{ absolute_url(asset('uploads/actualites/'~ actualite.media)) }}" alt="" class="img-thumbnail" style="margin-bottom: 15px;">
+                {{ actualite.contenu|raw }}
+            </p>
+        </div><!-- modal-body -->
+        <div class="modal-footer">
+            {{ include('actualite/_delete_form.html.twig') }}
+            <a href="{{ path('backend_actualite_edit', {'slug':  actualite.slug}) }}" class="btn btn-primary">Modifier</a>
+            <button type="button" data-dismiss="modal" class="btn btn-outline-light">Fermer</button>
+        </div>
+    </div>
+</div>

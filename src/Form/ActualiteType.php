@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Agenda;
+use App\Entity\Actualite;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -11,7 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 
-class AgendaType extends AbstractType
+class ActualiteType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -38,14 +38,10 @@ class AgendaType extends AbstractType
                 ],
                 'required' => false
             ])
-            ->add('dateDebut', TextType::class,['attr'=>['class'=>"form-control fc-datepicker", 'placeholder'=>"", 'autocomplete'=>"off"]])
-            ->add('dateFin', TextType::class,['attr'=>['class'=>"form-control fc-datepicker", 'placeholder'=>"", 'autocomplete'=>"off"]])
-            //->add('heureDebut', TextType::class,['attr'=>['class'=>"form-control heurepicker", 'placeholder'=>"", 'autocomplete'=>"off"]])
-            //->add('heureFin', TextType::class,['attr'=>['class'=>"form-control heurepicker", 'placeholder'=>"", 'autocomplete'=>"off"]])
-           // ->add('slug')
+            //->add('slug')
             //->add('createdAt')
-           // ->add('updatedAt')
-           // ->add('createdBy')
+            //->add('UpdatedAt')
+            //->add('createdBy')
             //->add('updatedBy')
         ;
     }
@@ -53,7 +49,7 @@ class AgendaType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Agenda::class,
+            'data_class' => Actualite::class,
         ]);
     }
 }
