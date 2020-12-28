@@ -1,0 +1,20 @@
+<div class="component-item">
+    <label>Menu Accueil</label>
+    <nav class="nav flex-column">
+        <a href="{{ path('backend_presentation_index') }}" class="nav-link {% if show == 'presentation' %}active{% endif %}">Qui sommes-nous?</a>
+        <a href="{{ path('backend_agenda_index') }}" class="nav-link {% if show == 'agenda' %}active{% endif %}">Historique</a>
+        <a href="{{ path('backend_mission_index') }}" class="nav-link {% if show == 'mission' %}active{% endif %}">La presse parle de nous</a>
+        <a href="{{ path('backend_faq_index') }}" class="nav-link {% if show == 'faq' %}active{% endif %}">Statut</a>
+        <a href="{{ path('backend_rex_index') }}" class="nav-link {% if show == 'rex' %}active{% endif %}">Règlements</a>
+        <a href="{{ path('backend_rex_index') }}" class="nav-link {% if show == 'rex' %}active{% endif %}">Conseil d'administration</a>
+        <a href="{{ path('backend_rex_index') }}" class="nav-link {% if show == 'rex' %}active{% endif %}">Comité de pilotage</a>
+        <a href="{{ path('backend_rex_index') }}" class="nav-link {% if show == 'rex' %}active{% endif %}">Document</a>
+    </nav>
+
+    <label>Securité</label>
+    <nav class="nav flex-column">
+        <a href="#" class="nav-link">Mes actions</a>
+        <a href="#" class="nav-link">Changer mon mot de passe</a>
+        <a href="#" class="nav-link">Déconnexion</a>
+    </nav>
+</div>

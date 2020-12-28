@@ -1,0 +1,51 @@
+{% extends 'backend_layout.html.twig' %}
+
+{% block title %}{{ parent() }} Gestion de la présentation{% endblock %}
+
+{% block body %}
+    <div class="az-content pd-y-20 pd-lg-y-30 pd-xl-y-40">
+        <div class="container">
+            <div class="az-content-left az-content-left-components">
+                {{ include('dashbord/menu_presentation.html.twig') }}
+
+            </div>
+            <div class="az-content-body pd-lg-l-40 d-flex flex-column">
+                <div class="az-content-breadcrumb">
+                    <span>Backoffice</span>
+                    <span>L'association</span>
+                    <span>Qui sommes-nous?</span>
+                </div>
+                <h2 class="az-content-title">Gestion de la présentation</h2>
+
+                <div class="az-content-label mg-b-5"></div>
+
+                <div class="mb-5 text-right">
+                    <a href="{{ path('backend_presentation_index') }}" class="btn btn-outline-primary"><i class="fa fa-reply"></i> Liste</a>
+                </div>
+
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{message|raw}}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+                {{ include('presentation/_form.html.twig') }}
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdn.ckeditor.com/4.15.1/standard-all/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace( 'presentation[contenu]');
+    </script>
+{% endblock %}
