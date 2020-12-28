@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('backend_historique_delete', {'id': historique.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet historique?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ historique.id) }}">
+    <button class="badge badge-danger"><i class="fa fa-trash"></i></button>
+</form>

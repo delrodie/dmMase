@@ -1,0 +1,32 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-md-10 offset-1">
+        <div class="row form-group d-md-flex">
+            <div class="col-md-12 mg-b-20">
+                {{ form_row(form.annee) }}
+            </div>
+        </div>
+        <div class="row form-group d-md-flex">
+            <div class="col-md-12 mg-b-20">
+                {{ form_row(form.action) }}
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-12">
+                <div id="cbWrapper2" class="parsley-checkbox mg-b-0">
+                    <label class="ckbox">
+                        <input type="checkbox" name="revenir" value="revenir"><span>Rester sur le formulaire après soumission</span>
+                    </label>
+                </div>
+                <div id="cbErrorContainer2" class="wd-250"></div>
+            </div>
+        </div>
+        <div class="row form-group d-md-flex">
+            <div class="col-md-12 mg-b-20 text-right">
+                {{ form_widget(form) }}
+                <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> &nbsp; {{ button_label|default('Enregistrer') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}

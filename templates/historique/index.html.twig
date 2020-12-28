@@ -1,0 +1,83 @@
+{% extends 'backend_layout.html.twig' %}
+
+{% block title %}{{ parent() }} Gestion de l'historique{% endblock %}
+
+{% block body %}
+    <div class="az-content pd-y-20 pd-lg-y-30 pd-xl-y-40">
+        <div class="container">
+            <div class="az-content-left az-content-left-components">
+                {{ include('dashbord/menu_presentation.html.twig') }}
+
+            </div>
+            <div class="az-content-body pd-lg-l-40 d-flex flex-column">
+                <div class="az-content-breadcrumb">
+                    <span>Backoffice</span>
+                    <span>L'association</span>
+                    <span>Historique</span>
+                </div>
+                <h2 class="az-content-title">Gestion de l'historique</h2>
+
+                <div class="az-content-label mg-b-5"></div>
+                <p class="mg-b-20"></p>
+
+                <div class="mb-5 text-right">
+                    <a href="{{ path('backend_historique_new') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Ajouter</a>
+                </div>
+
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{message|raw}}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+                <div class="table-responsive">
+                    <table class="table table-hover mg-b-0">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Années</th>
+                            <th>Actions</th>
+                            <th class="text-center">#</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for historique in historiques %}
+                            <tr>
+                                <th scope="row">{{ loop.index }}</th>
+                                <td>
+                                    {{ historique.annee }}
+                                </td>
+                                <td>{{ historique.action }}</td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col-sm-6 text-right">
+                                            <a href="{{ path('backend_historique_edit', {'id': historique.id}) }}" class="badge badge-primary">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            {{ include('historique/_delete_form.html.twig') }}
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="4" class="text-center" style="font-size: 1.3rem;">
+                                    <em> Aucun élément</em>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
