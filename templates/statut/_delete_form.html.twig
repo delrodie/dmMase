@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('backend_statut_delete', {'id': statut.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimé ce statut?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ statut.id) }}">
+    <button class="btn btn-danger">Supprimer</button>
+</form>
