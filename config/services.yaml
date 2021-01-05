@@ -38,3 +38,4 @@ services:
             $agendaDirectory: '%kernel.project_dir%/public/uploads/agenda'
             $rexDirectory: '%kernel.project_dir%/public/uploads/rex'
             $actualiteDirectory: '%kernel.project_dir%/public/uploads/actualites'
+            $presseDirectory: '%kernel.project_dir%/public/uploads/presses'

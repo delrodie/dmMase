@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('backend_presse_delete', {'id': presse.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer cet article?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ presse.id) }}">
+    <button class="btn btn-danger">Supprimer</button>
+</form>
