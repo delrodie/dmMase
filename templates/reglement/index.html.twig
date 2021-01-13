@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reglement index{% endblock %}
+
+{% block body %}
+    <h1>Reglement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Contenu</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reglement in reglements %}
+            <tr>
+                <td>{{ reglement.id }}</td>
+                <td>{{ reglement.contenu }}</td>
+                <td>
+                    <a href="{{ path('reglement_show', {'id': reglement.id}) }}">show</a>
+                    <a href="{{ path('reglement_edit', {'id': reglement.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('reglement_new') }}">Create new</a>
+{% endblock %}
