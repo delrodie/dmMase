@@ -2,11 +2,318 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Dream Maker, Delrodie AMOIKON">
+        <title>{% block title %}MASE Côte d'Ivoire{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700&amp;subset=latin-ext" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
+            <link href="{{ absolute_url(asset('ressources/css/font-awesome.min.css')) }}" rel="stylesheet" />
+            <link href="{{ absolute_url(asset('ressources/css/bootstrap.min.css')) }}" rel="stylesheet" />
+            <link href="{{ absolute_url(asset('ressources/css/normalize.min.css')) }}" rel="stylesheet" />
+            <link href="{{ absolute_url(asset('ressources/css/owl.carousel.min.css')) }}" rel="stylesheet" />
+            <link href="{{ absolute_url(asset('ressources/css/main.css')) }}" rel="stylesheet" />
+            <link rel="stylesheet" href="{{ absolute_url(asset('ressources/css/mase.css')) }}">
+            <!--<script src="ressources/js/modernizr.js"></script>-->
+            <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+            <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+            <![endif]-->
+        {% endblock %}
+        <style type="text/css">
+            .nd-carrer {
+                width: 300px;
+                height: auto;
+                position: fixed;
+                bottom: 0px;
+                right: 0px;
+                right: 0px;
+                padding: 15px;
+                text-align: center;
+                background-color: #fff;
+                background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+                transition: all ease 0.4s;
+                transform: translateY(100%);
+                z-index: -1;
+                opacity: 0;
+            }
+
+            .nd-carrer.show-nd-carrer {
+                transform: translateY(0%);
+                z-index: 999;
+                opacity: 1;
+            }
+
+            .nd-carrer-inner {
+
+                border: 1px dashed rgba(255, 255, 255, 0.7);
+                padding: 20px 10px;
+                position: relative;
+            }
+
+            .nd-carrer-close {
+                width: 20px;
+                height: 20px;
+                background-color: #fff;
+                border-radius: 50%;
+                display: block;
+                position: absolute;
+                top: -10px;
+                right: -10px;
+                line-height: 20px;
+                text-align: center;
+                font-size: 15px;
+                cursor: pointer;
+                transition: all ease 1s;
+            }
+
+            .nd-carrer-close:hover {
+                background-color: red;
+                color: #fff;
+            }
+
+            .nd-carrer .nd-carrer-icon {
+                text-align: center;
+                padding: 10px 0px 10px 0px;
+
+            }
+
+            .nd-carrer .nd-carrer-icon img {
+                max-width: 40px;
+            }
+
+            .nd-carrer p {
+                font-family: arial;
+                font-weight: normal;
+                font-size: 15px;
+                color: #fff;
+                margin: 0px 0px 10px 0px;
+                text-align: center;
+            }
+
+            .nd-carrer a {
+                font-size: 15px;
+                color: #fff;
+                font-weight: bold;
+            }
+
+            .nd-carrer a:hover {
+                text-decoration: underline;
+            }
+
+            .acces-membre{
+                margin-top: 50px;
+                padding-right: 30px;
+            }
+
+        </style>
+        <link rel="icon" type="image/x-icon" href="{{ absolute_url(asset('favicon.ico')) }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        <nav class="menu-res hidden-lg hidden-md ">
+            <div class="menu-res-inner">
+                <ul>
+                    <li><a href="{{ absolute_url(path('app_home'))}}">ACCUEIL</a></li>
+                    <li><a href="#">L'ASSOCIATION</a></li>
+                    <li><a href="#"> Actualités</a></li>
+                    <li><a href="#"> Referentiel</a></li>
+                    <li><a href="#"> Base Form</a></li>
+                    <li><a href="#"> Gallerie</a></li>
+                    <li><a href="#"> Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="page">
+            <div class="container">
+                <header class="header">
+                    <div class="row">
+                        <div class="col-md-7 col-sm-6 col-xs-12">
+                            <a href="{{ absolute_url(path('app_home'))}}" class="logo">
+                                <img alt="Logo" src="{{ absolute_url(asset('ressources/images/logo-mase.png')) }}" width="100%" style="float: left; margin-right: 15px; margin-top: 20px"/>
+                            </a>
+                            <h4 class="h4" style="color: #0C865F; padding-top: 20px; padding-left: 10px; line-height: 30px;">MANUEL D'AMELIORATION SECURITE SANTE ENVIRONNEMENT DES ENTREPRISES</h4>
+                        </div>
+                        <div class="col-md-5 col-sm-6  text-right col-xs-12 hidden-xs">
+                            <div class="row mt-5 acces-membre">
+                                <div class="col-sm-12 text-right">
+                                    <i class="fa fa-user-plus"></i> <a href="#">Devenez membre</a> |
+                                    <i class="fa fa-lock"></i> <a href="#"> Connexion</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <nav class="menu font-heading" id="menu">
+                    <div class="menu-icon hidden-lg hidden-md">
+                        <i class="fa fa-navicon"></i>
+                        <span>MENU</span>
+                    </div>
+                    <ul class="hidden-sm hidden-xs">
+                        <li>
+                            <a href="{{ absolute_url(path('app_home'))}}"><i class="fa fa-home fa-lg"></i> </a>
+                        </li>
+
+                        <li class="mega">
+                            <a href="#">L'association<span></span></a>
+                            <div class="mega-menu">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <ul class="submenu2">
+                                            <li><a href="#">Qui sommes-nous?</a></li>
+                                            <li><a href="#">Historique</a> </li>
+                                            <li><a href="#">Adhesion</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <ul class="submenu2">
+                                            <li><a href="#">Organigramme</a></li>
+                                            <li><a href="#">Conseil d'administration</a></li>
+                                            <li><a href="#">Comité de pilotage</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <ul class="submenu2">
+                                            <li><a href="#">Statut</a></li>
+                                            <li><a href="#">Reglement interieur</a></li>
+                                            <li><a href="#">Document</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#">Actualités</a>
+                        </li>
+                        <li>
+                            <a href="#">Referentiel </a>
+                        </li>
+                        <li>
+                            <a href="#">Base Form </a>
+                        </li>
+                        <li>
+                            <a href="#">Galerie </a>
+                        </li>
+                        <li>
+                            <a href="#">Contact </a>
+                        </li>
+                    </ul>
+                    <div class="search-icon">
+                        <div class="search-icon-inner">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <div class="search-box">
+                            <input type="text" placeholder="recherche..." />
+                            <button>R</button>
+                        </div>
+                    </div>
+                </nav>
+                {% block body %}{% endblock %}
+            </div>
+            <footer class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4  col-sm-4 col-xs-12">
+                            <div class="footer-presentation">
+                                <a href="#" class="" style="float:left;">
+                                    <img alt="" src="{{ absolute_url(asset('ressources/images/logo-mase_bw.png')) }}" width="150" />
+                                </a>
+                                <p class="presentation">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam, aliquid amet dolor ea excepturi minus quidem quod vero voluptatum? Dolore eaque eligendi hic impedit numquam pariatur ratione velit! Exercitationem!
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-md-offset-1 col-sm-4 col-xs-12">
+                            <h3>Rubriques </h3>
+                            <ul class="list-category">
+                                <li><a href="#">L'association</a></li>
+                                <li><a href="#">Actualités</a></li>
+                                <li><a href="#">Référentiels</a></li>
+                                <li><a href="#">Base Form</a></li>
+                                <li><a href="#">Galerie</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">Adherants</a></li>
+                                <li><a href="#">Certifiés</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-3 col-md-offset-1 col-sm-4 col-xs-12">
+                            <h3>Contacts</h3>
+                            <div class="row footer-contact">
+                                <div class="col-md-12"><i class="fa fa-map-marker fa-lg"></i> Abidjan, Côte d'Ivoire</div>
+                                <div class="col-md-12"><i class="fa fa-envelope"></i> 05 BP 0000 Abidan 05</div>
+                                <div class="col-md-12"><i class="fa fa-phone"></i> +225 00 00 00 00</div>
+                                <div class="col-md-12"><fa class="fa fa-envelope-o"></fa> info@mase-cotedivoire.com</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--All right-->
+                    <div class="allright">
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-12">
+                                <p>
+                                    &copy;   2021 <a href="{{ absolute_url(path("app_home")) }}">MASE COTE D'IVOIRE</a>. Tous droits réservés.
+
+                                </p>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <p><a href="{{ absolute_url(path("app_dashbord")) }}" target="_blank">Backoffice</a></p>
+
+                            </div>
+
+                            <div class="col-sm-3 col-xs-12 text-right">
+                               <p>Powered by <a href="http://dreammaker-ci.com" target="_blank">Dream Maker</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <div class="nd-carrer">
+            <div class="nd-carrer-inner">
+                <div class="nd-carrer-close">x</div>
+                <p>
+                    Rejoignez-nous <br>Que vous représentiez une entreprise ou que vous soyez salarié d'une entreprise adhérante au MSE
+
+                    <br/>Devenez membre
+                </p>
+                <a href="#"><span>Bulletin d'adhesion</span></a>
+            </div>
+        </div>
+        {% block javascripts %}
+            <script src="{{ absolute_url(asset('ressources/js/jquery.min.js')) }}"></script>
+            <script src="{{ absolute_url(asset('ressources/js/jquery.vticker-min.js')) }}"></script>
+            <script src="{{ absolute_url(asset('ressources/js/bootstrap.js')) }}"></script>
+            <script src="{{ absolute_url(asset('ressources/js/owl.carousel.min.js')) }}"></script>
+            <script src="{{ absolute_url(asset('ressources/js/main.js')) }}"></script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    setTimeout(function() {
+
+                        $('.nd-carrer').addClass("show-nd-carrer");
+                    }, 5000);
+                    $('.nd-carrer-close').click(function() {
+                        $('.nd-carrer').removeClass("show-nd-carrer");
+                    });
+                });
+                $('.partenaires').vTicker({
+                    speed: 500,
+                    pause: 3000,
+                    showItems: 15,
+                    animation: 'fade',
+                    mousePause: true,
+                    height: 0,
+                    direction: 'up'
+
+                });
+
+
+            </script>
+        {% endblock %}
     </body>
 </html>

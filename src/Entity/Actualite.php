@@ -172,6 +172,6 @@ class Actualite
      */
     public function setUpdatedAtValue(): void
     {
-        $this->updatedBy = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 }

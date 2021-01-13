@@ -1,0 +1,299 @@
+.lis-entreprise li {
+    padding: 10px 0px 10px 0px;
+    border-bottom: 1px solid #eeeeee; }
+.lis-entreprise li img {
+    width: 70px;
+    height: 60px;
+    float: left;
+    margin: 0px 0px 0px -85px; }
+.lis-entreprise li h3 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px; }
+.lis-entreprise li h3 a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    -moz-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+    transition: all ease 0.3s;
+    font-family: "Roboto Slab", serif; }
+.lis-entreprise li h3 a:hover {
+    color: #0C865F; }
+.lis-entreprise li .meta-post {
+    margin: 0px;
+    margin-top: 5px; }
+
+ul.lis-entreprise li{position:relative;overflow:hidden;}
+ul.lis-entreprise li a {animation:linear marqueelike 10s infinite  ;margin-left:-100%;padding:0 5px;text-align:left;}
+ul.lis-entreprise li a:after {content:attr(data-text);position:absolute;white-space:nowrap;padding-left:10px;}
+@keyframes marqueelike {
+    0%, 100% {margin-top:0;}
+    99.99% {margin-top:-100%;}
+}
+.list-rex-popular li img {
+    width: 100px;
+    height: 75px;
+    float: left;
+    margin: 0px 10px 0px -85px; }
+
+.similaire{
+    margin-bottom: 50px;
+}
+
+.list-article li{
+    border-bottom: solid 1px #cccccc;
+    width: 100%;
+}
+
+.list-article li h3{
+    font-size: 1.2em;
+    margin-left: 15px;
+}
+
+.list-article li ul {
+    margin-left: 25px;
+}
+
+.all-agenda{
+    margin-top: 15px;
+    font-size: 1.7rem;
+    font-style: italic;
+    color: #0C865F;
+}
+
+.liste-partenaires {
+    width: 92%;
+    font-size: 1.5rem;
+}
+.liste-partenaires li:nth-child(even){
+    /*border-bottom: solid 1px #999;*/
+    background-color: #fafafa;
+}
+.liste-partenaires li:nth-child(old){
+    border-bottom: solid 1px #999;
+}
+.liste-partenaires li div{
+    padding: 5px 0 5px 15px;
+}
+
+.footer-presentation{
+    color: #c0c0c0;
+}
+.footer-presentation img{
+    margin-right: 15px;
+}
+.footer-presentation .presentation{
+    text-align: justify;
+
+}
+.footer-contact div{
+    color: #c0c0c0;
+    font-size: 1.4rem;
+}
+
+.block{
+    margin-bottom: 100px;
+}
+
+.menu-title{
+    font-size: 1.5rem;
+    margin-left: 10px;
+    border-bottom: solid 1px #cccccc;
+    padding: 10px 0 5px 0;
+    background-color: #f6f6f6;
+}
+
+.menu-items{
+    margin-left: 30px;
+    font-size: 1.4rem;
+}
+
+.menu-items li.item{
+    padding: 4px 0;
+    border-bottom: solid 1px #cccccc;
+}
+
+.article-similaire{
+    border-top: solid 2px #cccccc;
+    margin-top: 100px;
+}
+
+.article-similaire .titre{
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.article-similaire ul {
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+.article-similaire ul li{
+    padding: 5px 0 0 0;
+    font-size: 1.6rem;
+    list-style-type: square;
+}
+
+.acces-membre i.fa{
+    color: #0C865F;
+}
+
+.acces-membre span{
+    font-size: 1.5em;
+    color: #036691;
+    font-weight: bold;
+}
+
+.form-connexion{
+    margin-top: 25px;
+}
+.form-connexion label{
+    font-size: 1.3em;
+}
+.form-connexion .password-forget{
+    font-size: 1.2em;
+    padding-top: 10px;
+    color: #036691;
+    font-style: italic;
+}
+
+.password-forget a:hover{
+    color: #0C865F;
+}
+
+.begin-member{
+    width: 100%;
+}
+
+.bg-degrade{
+    background: linear-gradient(#036691, white);
+        -moz-linear-gradient(#036691, white);
+        -o-linear-gradient(#036691, white);
+        -webkit-linear-gradient(#036691, white);
+    height: 250px;
+}
+.bg-degrade .title{
+    color: white;
+    font-size: 1.3em;
+    text-align: center;
+    margin-top: 10px;
+    padding-top: 20px;
+}
+.bg-degrade .title a{
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.1em;
+}
+.bg-degrade .button{
+    margin-top: 20px;
+    text-align: center;
+}
+.bg-degrade .btn{
+    margin: 3px;
+    padding: 10px 25px;
+    background-color: #fff;
+    font-weight: bold;
+}
+
+.actualites-partenaire{
+    margin-top: 100px;
+}
+
+.menu ul .submenu2 li {
+    margin: 5px 0px;
+    display: block; }
+.menu ul .submenu2 li a {
+    display: block;
+    line-height: 35px;
+    text-align: left;
+    text-transform: none;
+    padding: 0px 15px;
+    letter-spacing: 0px;
+    color: #333;
+    font-size: 15px;
+    -moz-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+    transition: all ease 0.3s;
+    font-family: "Roboto Slab", serif;
+    float: none; }
+.menu ul .submenu2 li a:hover {
+    background-color: #036691;
+    color: #fff;
+    padding-left: 20px;
+    letter-spacing: 1px; }
+
+.menu ul .mega-menu {
+    position: absolute;
+    background-color: #fff;
+    z-index: 9999;
+    top: 100%;
+    opacity: 0;
+    visibility: hidden;
+    left: 0px;
+    right: 0px;
+    min-height: 200px;
+    height: auto;
+    margin-top: 15px;
+    -moz-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+    transition: all ease 0.3s;
+    border: 1px solid #999;
+    padding: 20px 20px 20px 20px; }
+
+.faq{
+    margin-top: 100px;
+}
+.rex{
+    margin-top: 50px;
+}
+
+.special-rex {
+    border: 1px solid #eeeeee;
+    min-height: 150px;
+    padding: 0px 15px 0px 80px;
+    /*max-width: 600px;*/
+    text-align: center;
+    width: 100%;
+    position: relative;
+    margin-top: 10px; }
+.special-rex img {
+    margin: 0 auto 15px auto;
+    width: 100px !important;
+    height: 100px !important; }
+.special-rex h3 {
+    margin: 0px;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 5px 0px 15px 0px; }
+.special-rex h3 a {
+    color: #333;
+    -moz-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    -webkit-transition: all ease 0.3s;
+    transition: all ease 0.3s; }
+.special-rex h3 a:hover {
+    color: #0C865F; }
+.special-rex .meta-post {
+    margin: 0px 0px 0px 0px; }
+
+.carousel-partenaire-certifie img{
+    margin: 25px auto 15px auto;
+    width: 100px !important;
+    height: 100px !important;
+}
+.carousel-partenaire-certifie h3 {
+    margin: 0px;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 5px 0px 15px 0px; }
+.carousel-partenaire-certifie h3 a:hover{
+    color: #0C865F;
+}

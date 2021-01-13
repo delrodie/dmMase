@@ -1,8 +1,198 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mase{% endblock %}
+{% block title %}MASE Côte d'Ivoire{% endblock %}
 
 {% block body %}
+    <div class="row">
+        <div class="col-md-8 col-sm-12">
+            <section class="owl-carousel owl-special">
+                {% for slider in sliders|slice(0,3) %}
+                    <div>
+                        <article class="spotlight-item">
+                            <div class="spotlight-img">
+                                <img alt="" src="{{ absolute_url(asset('uploads/Slides/'~ slider.media)) }}" class="img-responsive" title="{{ slider.titre }}" />
+                            </div>
+                        </article>
+                    </div>
+                {% endfor %}
+            </section>
 
-    <a href="{{ path('app_dashbord') }}">Dashbord</a>
+            <section class="box-news">
+                <div class="box-caption">
+                    <span> Mission</span>
+                </div>
+                <article class="news-two-large news-three-large">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-6 col-xs-12">
+                            <a href="#">
+                                <img alt="" src="{{ absolute_url(asset('uploads/mission/'~ mission.media)) }}" class="img-responsive" />
+                            </a>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <p>{{ mission.contenu|raw|slice(0,400) }}...</p>
+                        </div>
+                    </div>
+
+
+                </article>
+            </section>
+            <section class="spotlight-thumbs">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box-caption">
+                            <span> Actualités</span>
+                        </div>
+                    </div>
+                    {% for actualite in actualites|slice(0,3) %}
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="spotlight-item-thumb">
+                                <div class="spotlight-item-thumb-img">
+                                    <a href="#">
+                                        <img alt="{{ actualite.titre }}" src="{{ absolute_url(asset('uploads/actualites/'~ actualite.media)) }}" />
+                                    </a>
+                                </div>
+                                <h3><a href="#">{{ actualite.titre }}</a></h3>
+                                <div class="meta-post">
+                                    <span>{{ actualite.createdAt|date('d-m-Y') }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+        </div>
+
+        {% if agendas %}
+            <div class="col-md-4 col-sm-12">
+                <ul role="tablist" class="tab-popular">
+                    <li class="active">
+                        <a href="#tab1" role="tab" data-toggle="tab">
+                            AGENDA
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="tab1">
+                        <ul class="list-news-popular">
+                            {% for agenda in agendas|slice(0,4) %}
+                                <li>
+                                    <a href="#">
+                                        <img alt="{{ agenda.titre }}" src="{{ absolute_url(asset('uploads/agenda/'~ agenda.media)) }}" width="100">
+                                    </a>
+                                    <h3><a href="#">{{ agenda.titre}}</a></h3>
+                                    <p>{{ agenda.contenu|raw|slice(0,80) }}...</p>
+                                    <div class="meta-post">
+                                        <a href="#" title="Début période">
+                                            <i class="fa fa-calendar"></i> {{ agenda.dateDebut|date('d/m/Y') }}
+                                        </a>
+                                        <em></em>
+                                        <span>
+                                            <a href="#" title="Fin période"><i class="fa fa-calendar"></i> {{  agenda.dateFin|date('d/m/Y') }}</a>
+
+                                        </span>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        {% if agendas|length > 4 %}
+                            <div class="text-right all-agenda">
+                                ...<a href="#">Voir tout l'agenda</a>
+                            </div>
+                        {% endif %}
+
+
+                    </div>
+                </div>
+
+                {% if entreprise %}
+                    <div class="connect-us">
+                        <div class="widget-title">
+                            <span>Nos Adherants</span>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 partenaires">
+                                <ul class="liste-partenaires">
+                                    <li><div>1 ENTREPRISE </div></li>
+                                    <li><div>2 ENTREPRISE</div></li>
+                                    <li><div>3 ENTREPRISE</div></li>
+                                    <li><div>4 ENTREPRISE</div></li>
+                                    <li><div>5 ENTREPRISE</div></li>
+                                    <li><div>6 ENTREPRISE</div></li>
+                                    <li><div>7 ENTREPRISE</div></li>
+                                    <li><div>8 ENTREPRISE</div></li>
+                                    <li><div>9 ENTREPRISE</div></li>
+                                    <li><div>10 ENTREPRISE</div></li>
+                                    <li><div>11 ENTREPRISE</div></li>
+                                    <li><div>12 ENTREPRISE</div></li>
+                                    <li><div>13 ENTREPRISE</div></li>
+                                    <li><div>14 ENTREPRISE</div></li>
+                                    <li><div>15 ENTREPRISE</div></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+        {% endif %}
+    </div>
+    <div class="row faq" id="faq">
+        <div class="col-md-8">
+            <section class="spotlight-thumbs">
+                <div class="box-caption">
+                    <span> Foire Aux Questions</span>
+                </div>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    {% for faq in faqs %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading{{ loop.index }}">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ loop.index }}" aria-expanded="{% if loop.first %}true{% else %}false{% endif %}" aria-controls="collapse{{ loop.index }}">
+                                        {{ faq.question}}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse{{ loop.index }}" class="panel-collapse collapse {% if loop.first %}in{% endif %}" role="tabpanel" aria-labelledby="heading{{ loop.index }}">
+                                <div class="panel-body">
+                                    {{ faq.solution|raw }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </section>
+        </div>
+        <div class="col-md-4">
+            <div class="subcribe-box">
+                <h3>NEWSLETTER</h3>
+                <p>Abbonez-vous a notre Newsletter pour recevoir les informations</p>
+                <input type="text" placeholder="Votre adresse Email..." />
+                <button class="my-btn">S'inscrire</button>
+            </div>
+        </div>
+    </div>
+    <div class="row rex" id="rex">
+        <div class="col-md-12 col-md-offset-0 col-sm-8 col-xs-12 hidden-xs">
+            <div class="box-caption">
+                <span> Retour d'Expériences</span>
+            </div>
+            <div class="owl-carousel owl-special">
+                {% for rex in rexes %}
+                    <div>
+                        <div class="special-rex text-center">
+                            <a href="#" class="text-center">
+                                <img alt="{{ rex.entreprise }}" src="{{ absolute_url(asset('uploads/rex/'~ rex.media)) }}"  />
+                            </a>
+                            <h3><a href="#">{{ rex.entreprise }} </a></h3>
+                            <div class="meta-post">
+                                <p>{{ rex.message|raw }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

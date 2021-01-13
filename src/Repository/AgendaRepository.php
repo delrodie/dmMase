@@ -19,6 +19,15 @@ class AgendaRepository extends ServiceEntityRepository
         parent::__construct($registry, Agenda::class);
     }
 
+    public function getEncours()
+    {
+        return $this->createQueryBuilder('a')
+            ->where(':date BETWEEN a.dateDebut AND a.dateFin')
+            ->setParameter('date', date('Y-m-d', time()))
+            ->getQuery()->getResult()
+            ;
+    }
+
     // /**
     //  * @return Agenda[] Returns an array of Agenda objects
     //  */
