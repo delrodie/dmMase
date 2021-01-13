@@ -24,7 +24,7 @@
                 <article class="news-two-large news-three-large">
                     <div class="row">
                         <div class="col-md-8 col-sm-6 col-xs-12">
-                            <a href="#">
+                            <a href="{{ absolute_url(path("frontend_mission",{'mission': mission.id})) }}">
                                 <img alt="" src="{{ absolute_url(asset('uploads/mission/'~ mission.media)) }}" class="img-responsive" />
                             </a>
                         </div>
