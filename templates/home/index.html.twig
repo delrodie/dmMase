@@ -17,25 +17,27 @@
                 {% endfor %}
             </section>
 
-            <section class="box-news">
-                <div class="box-caption">
-                    <span> Mission</span>
-                </div>
-                <article class="news-two-large news-three-large">
-                    <div class="row">
-                        <div class="col-md-8 col-sm-6 col-xs-12">
-                            <a href="{{ absolute_url(path("frontend_mission",{'mission': mission.id})) }}">
-                                <img alt="" src="{{ absolute_url(asset('uploads/mission/'~ mission.media)) }}" class="img-responsive" />
-                            </a>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <p>{{ mission.contenu|raw|slice(0,400) }}...</p>
-                        </div>
+            {% if mission %}
+                <section class="box-news">
+                    <div class="box-caption">
+                        <span> Mission</span>
                     </div>
+                    <article class="news-two-large news-three-large">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                <a href="{{ absolute_url(path("frontend_mission",{'mission': mission.id})) }}">
+                                    <img alt="" src="{{ absolute_url(asset('uploads/mission/'~ mission.media)) }}" class="img-responsive" />
+                                </a>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <p>{{ mission.contenu|raw|slice(0,400) }}...</p>
+                            </div>
+                        </div>
 
 
-                </article>
-            </section>
+                    </article>
+                </section>
+            {% endif %}
             <section class="spotlight-thumbs">
                 <div class="row">
                     <div class="col-md-12">
