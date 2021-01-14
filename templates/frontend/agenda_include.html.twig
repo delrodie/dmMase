@@ -1,0 +1,37 @@
+{% if agendas %}
+    <ul role="tablist" class="tab-popular">
+        <li class="active">
+            <a href="#tab1" role="tab" data-toggle="tab">
+                AGENDA
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="tab1">
+            <ul class="list-news-popular">
+                {% for agenda in agendas|slice(0,4) %}
+                    <li>
+                        <a href="{{ absolute_url(path('frontend_agenda_show', {'slug': agenda.slug}) )}}">
+                            <img alt="{{ agenda.titre }}" src="{{ absolute_url(asset('uploads/agenda/'~ agenda.media)) }}" width="100">
+                        </a>
+                        <h3><a href="{{ absolute_url(path('frontend_agenda_show', {'slug': agenda.slug}) )}}">{{ agenda.titre}}</a></h3>
+                        <p>{{ agenda.contenu|raw|slice(0,80) }}...</p>
+                        <div class="meta-post">
+                            <a href="#" title="Début période">
+                                <i class="fa fa-calendar"></i> {{ agenda.dateDebut|date('d/m/Y') }}
+                            </a>
+                            <em></em>
+                            <span>
+                               <a href="#" title="Fin période"><i class="fa fa-calendar"></i> {{  agenda.dateFin|date('d/m/Y') }}</a>
+                            </span>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="text-right all-agenda">
+                ...<a href="{{ path('frontend_agenda_list') }}">Archives Agenda</a>
+            </div>
+
+        </div>
+    </div>
+{% endif %}

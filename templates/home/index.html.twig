@@ -77,10 +77,10 @@
                         <ul class="list-news-popular">
                             {% for agenda in agendas|slice(0,4) %}
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ absolute_url(path('frontend_agenda_show', {'slug': agenda.slug}) )}}">
                                         <img alt="{{ agenda.titre }}" src="{{ absolute_url(asset('uploads/agenda/'~ agenda.media)) }}" width="100">
                                     </a>
-                                    <h3><a href="#">{{ agenda.titre}}</a></h3>
+                                    <h3><a href="{{ absolute_url(path('frontend_agenda_show', {'slug': agenda.slug}) )}}">{{ agenda.titre}}</a></h3>
                                     <p>{{ agenda.contenu|raw|slice(0,80) }}...</p>
                                     <div class="meta-post">
                                         <a href="#" title="Début période">

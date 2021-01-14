@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
-{% block title %} Mission de MASE Côte d'Ivoire {% endblock %}
+{% block title %} {{ agenda.titre}}{% endblock %}
 {% block body %}
     <div class="row">
         <div class="col-md-8 col-sm-12">
             <article class="post-detail">
-                <h1>Mission</h1>
+                <h1>{{ agenda.titre }}</h1>
 
                 <div class="post-detail-img">
-                    <img alt="" src="{{ absolute_url(asset('uploads/mission/'~ mission.media)) }}" width="1200" />
+                    <img alt="" src="{{ absolute_url(asset('uploads/agenda/'~ agenda.media)) }}" width="1200" />
                 </div>
 
                 <p class="text-justify">
-                    <span class="dropcap ">{{ mission.contenu|raw|slice(0,1) }}</span>
-                    {{ mission.contenu|raw|slice(1) }}
+                    <span class="dropcap ">{{ agenda.contenu|raw|slice(0,1) }}</span>
+                    {{ agenda.contenu|raw|slice(1) }}
                 </p>
 
             </article>
