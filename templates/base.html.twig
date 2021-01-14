@@ -120,7 +120,7 @@
                 <ul>
                     <li><a href="{{ absolute_url(path('app_home'))}}">ACCUEIL</a></li>
                     <li><a href="#">L'ASSOCIATION</a></li>
-                    <li><a href="#"> Actualités</a></li>
+                    <li><a href="{{ absolute_url(path('frontend_actualite_liste') )}}"> Actualités</a></li>
                     <li><a href="#"> Referentiel</a></li>
                     <li><a href="#"> Base Form</a></li>
                     <li><a href="#"> Gallerie</a></li>
@@ -187,7 +187,7 @@
                             </div>
                         </li>
                         <li>
-                            <a href="#">Actualités</a>
+                            <a href="{{ absolute_url(path('frontend_actualite_liste') ) }}">Actualités</a>
                         </li>
                         <li>
                             <a href="#">Referentiel </a>

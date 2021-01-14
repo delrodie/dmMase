@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block title %} {{ actualite.titre}}{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-8 col-sm-12">
+            <article class="post-detail">
+                <h1>{{ actualite.titre }}</h1>
+
+                <div class="post-detail-img">
+                    <img alt="" src="{{ absolute_url(asset('uploads/actualites/'~ actualite.media)) }}" width="1200" />
+                </div>
+
+                <p class="text-justify">
+                    <span class="dropcap ">{{ actualite.contenu|raw|slice(0,1) }}</span>
+                    {{ actualite.contenu|raw|slice(1) }}
+                </p>
+
+            </article>
+        </div>
+        <div class="col-md-4 col-sm-4">
+            {{ include('frontend/actualite_include.html.twig') }}
+            <div class="connect-us">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="fb-root"></div>
+                        <div class="fb-page" data-href="https://www.facebook.com/dreammakercicom/" data-tabs="timeline" data-width="" data-height="" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/dreammakercicom/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/dreammakercicom/">DREAM MAKER</a></blockquote></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v6.0"></script>
+{% endblock %}
