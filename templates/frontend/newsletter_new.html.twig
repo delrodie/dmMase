@@ -1,0 +1,9 @@
+<div class="subcribe-box">
+    <h3>NEWSLETTER</h3>
+    <p>Abbonez-vous a notre Newsletter pour recevoir les informations</p>
+    <form action="{{ path('frontend_newsletter_new') }}" method="post">
+        {{ form_widget(form.email) }}
+        {{ form_widget(form) }}
+        <button class="my-btn">S'inscriree</button>
+    </form>
+</div>

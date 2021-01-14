@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block title %}Inscription newsletter{% endblock %}
+{% block body %}
+    <div class="page-404">
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+
+                <h1>
+                    {% if label == "danger" %}Erreur {% else %}Success{% endif %}
+                </h1>
+                <div class="alert alert-{{ label}} alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4>{{message|raw}}</h4>
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        <a href="{{ absolute_url(path('app_home') )}}" class="my-btn btn-go-home">Retour à l'accueil</a>
+
+    </div>
+{% endblock %}
