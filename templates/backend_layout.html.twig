@@ -14,6 +14,7 @@
             <link href="{{ absolute_url(asset('backoffice/vendor/typicons/font/typicons.min.css')) }}" rel="stylesheet">
 
             <link rel="stylesheet" href="{{ absolute_url(asset('backoffice/css/style.css')) }}">
+            <link rel="icon" type="image/x-icon" href="{{ absolute_url(asset('ressources/images/favicon.ico')) }}" />
         {% endblock %}
     </head>
     <body>
@@ -65,6 +66,7 @@
                                 <a href="#" class="nav-link">Base Form</a>
                                 <a href="#" class="nav-link">Galerie</a>
                                 <a href="#" class="nav-link">Contact</a>
+                                <a href="{{ path('backend_newsletter_index') }}" class="nav-link">Newsletter</a>
                             </nav>
                         </li>
                         <li class="nav-item">

@@ -1,0 +1,89 @@
+{% extends 'backend_layout.html.twig' %}
+
+{% block title %}{{ parent() }} Gestion des newsletter{% endblock %}
+
+{% block body %}
+    <div class="az-content pd-y-20 pd-lg-y-30 pd-xl-y-40">
+        <div class="container">
+            <div class="az-content-left az-content-left-components">
+                {{ include('dashbord/menu_page.html.twig') }}
+
+            </div>
+            <div class="az-content-body pd-lg-l-40 d-flex flex-column">
+                <div class="az-content-breadcrumb">
+                    <span>Backoffice</span>
+                    <span>Page</span>
+                    <span>Newsletter</span>
+                </div>
+                <h2 class="az-content-title">Gestion des Newsletter</h2>
+
+                <div class="az-content-label mg-b-5"></div>
+                <p class="mg-b-20"></p>
+
+                <div class="mb-5 text-right">
+                    <a href="{{ path('backend_newsletter_index') }}" class="btn btn-primary"><i class="fa fa-list"></i>&nbsp; Liste</a>
+                </div>
+
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{message|raw}}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+                {{ include('newsletter/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+                {{ include('newsletter/_delete_form.html.twig') }}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .custom-file-input:lang(en) ~ .custom-file-label::after {
+            content: "Browse"; }
+        .custom-file-input ~ .custom-file-label[data-browse]::after {
+            content: attr(data-browse); }
+
+        .custom-file-label {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1;
+            height: calc(1.5em + 0.75rem + 2px);
+            padding: 0.375rem 0.75rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #596882;
+            background-color: #fff;
+            border: 1px solid #cdd4e0;
+            border-radius: 3px; }
+        .custom-file-label::after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 3;
+            display: block;
+            height: calc(1.5em + 0.75rem);
+            padding: 0.375rem 0.75rem;
+            line-height: 1.5;
+            color: #596882;
+            content: "Telecharger";
+            background-color: #e3e7ed;
+            border-left: inherit;
+            border-radius: 0 3px 3px 0; }
+        .preview {
+            max-width: 200px;
+            max-height: 200px;
+            display: block;
+        }
+    </style>
+{% endblock %}
