@@ -164,8 +164,8 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <ul class="submenu2">
-                                            <li><a href="#">Qui sommes-nous?</a></li>
-                                            <li><a href="#">Historique</a> </li>
+                                            <li><a href="{{ absolute_url(path('frontend_presentation', {'slug': 'presentation'}) ) }}">Qui sommes-nous?</a></li>
+                                            <li><a href="{{ absolute_url(path('frontend_presentation', {'slug': 'historique'}) ) }}">Historique</a> </li>
                                             <li><a href="#">Adhesion</a></li>
                                         </ul>
                                     </div>
@@ -178,8 +178,8 @@
                                     </div>
                                     <div class="col-md-4">
                                         <ul class="submenu2">
-                                            <li><a href="#">Statut</a></li>
-                                            <li><a href="#">Reglement interieur</a></li>
+                                            <li><a href="{{ absolute_url(path('frontend_presentation', {'slug': 'statut'}) ) }}">Statut</a></li>
+                                            <li><a href="{{ absolute_url(path('frontend_presentation', {'slug': 'reglement'}) ) }}">Reglement interieur</a></li>
                                             <li><a href="#">Document</a></li>
                                         </ul>
                                     </div>

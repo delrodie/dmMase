@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block title %} Historique de Mase {% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-4 col-sm-12">
+            {{ include('frontend/presentation_include.html.twig') }}
+
+            <!-- Agenda -->
+            <ul role="tablist" class="tab-popular hidden-sm hidden-xs">
+                <li class="active">
+                    <a href="#tab1" role="tab" data-toggle="tab">
+                        AGENDA
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content hidden-sm hidden-xs">
+                <div role="tabpanel" class="tab-pane active" id="tab1">
+                    {{ include('frontend/agenda_include.html.twig') }}
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12">
+            <article class="post-detail">
+                <h1>HISTORIQUE MASE</h1>
+                {% for historique in historiques %}
+                    <div class="row">
+                        <div class="col-md-1"><p class="text-justify"><strong>{{ historique.annee }}</strong></p></div>
+                        <div class="col-md-11">
+                            <p class="text-justify">
+                                {{ historique.action|raw }}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+            </article>
+
+        </div>
+    </div>
+{% endblock %}
