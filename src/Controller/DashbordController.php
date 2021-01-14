@@ -17,7 +17,7 @@ class DashbordController extends AbstractController
     public function index(): Response
     {
         return $this->render('dashbord/index.html.twig', [
-            'controller_name' => 'DashbordController',
+            'aujourdhui' => date('Y-m-d', time()),
         ]);
     }
 }
