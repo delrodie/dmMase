@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Dream Maker, Delrodie AMOIKON">
+        <title>{% block title %}Securité::{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ absolute_url(asset('backoffice/vendor/fontawesome/css/all.css')) }}" rel="stylesheet">
+            <link href="{{ absolute_url(asset('backoffice/vendor/ionicons/css/ionicons.min.css')) }}" rel="stylesheet">
+            <link href="{{ absolute_url(asset('backoffice/vendor/typicons/font/typicons.min.css')) }}" rel="stylesheet">
+
+            <link rel="stylesheet" href="{{ absolute_url(asset('backoffice/css/style.css')) }}">
+            <link rel="icon" type="image/x-icon" href="{{ absolute_url(asset('ressources/images/favicon.ico')) }}" />
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ absolute_url(asset('ressources/images/favicon.ico')) }}" />
+    </head>
+    <body class="az-body">
+    <div class="az-signin-wrapper">
+        <div class="az-card-signin">
+            <img src="{{ absolute_url(asset('ressources/images/logo-mase.png')) }}" alt="logo MASE">
+            <div class="az-signin-header">
+
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+
+    {% block javascripts %}
+        <script src="{{ absolute_url(asset('backoffice/js/jquery.min.js')) }}"></script>
+        <script src="{{ absolute_url(asset('backoffice/js/datepicker.js')) }}"></script>
+        <script src="{{ absolute_url(asset('backoffice/js/bootstrap.bundle.min.js')) }}"></script>
+        <script src="{{ absolute_url(asset('backoffice/vendor/ionicons/js/ionicons.js')) }}"></script>
+
+        <script src="{{ absolute_url(asset('backoffice/js/app.js')) }}"></script>
+        <script>
+            $(function(){
+                'use strict'
+
+            });
+        </script>
+    {% endblock %}
+    </body>
+</html>

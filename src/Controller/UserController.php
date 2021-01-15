@@ -30,7 +30,7 @@ class UserController extends AbstractController
     {
         //dd($userRepository->findBy([],['email'=>"ASC"]));
         return $this->render('user/index.html.twig', [
-            'users' => $userRepository->findBy([],['email'=>"ASC"]),
+            'users' => $userRepository->findList(),
             'show' => 'user'
         ]);
     }
