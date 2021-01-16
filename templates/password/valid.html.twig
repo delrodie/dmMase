@@ -1,0 +1,23 @@
+{% extends 'security_layout.html.twig' %}
+
+{% block title %}{{ parent() }} Connexion{% endblock %}
+
+{% block body %}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{message|raw}}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    <form style="margin-bottom: 250px;">
+        <h4 class="text-center"><a href="{{ path('app_logout') }}">Veuillez vous reconnecter</a></h4>
+    </form>
+
+    <div class="mb-40px" style="margin-bottom: 100px;">
+
+    </div>
+{% endblock %}
