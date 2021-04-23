@@ -230,9 +230,9 @@
                         <div class="col-md-3 col-md-offset-1 col-sm-4 col-xs-12">
                             <h3>Rubriques </h3>
                             <ul class="list-category">
-                                <li><a href="#">L'association</a></li>
+                                <li><a href="{{ absolute_url(path('frontend_presentation', {'slug': 'presentation'}) ) }}">L'association</a></li>
                                 <li><a href="#">Actualités</a></li>
-                                <li><a href="#">Référentiels</a></li>
+                                <li><a href="{{ absolute_url(path('frontend_referentiel')) }}">Référentiels</a></li>
                                 <li><a href="#">Base Form</a></li>
                                 <li><a href="#">Galerie</a></li>
                                 <li><a href="#">Contact</a></li>

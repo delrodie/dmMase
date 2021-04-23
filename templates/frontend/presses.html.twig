@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block title %} Historique de Mase {% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-4 col-sm-12">
+            {{ include('frontend/presentation_include.html.twig') }}
+
+            <!-- Agenda -->
+            <ul role="tablist" class="tab-popular hidden-sm hidden-xs">
+                <li class="active">
+                    <a href="#tab1" role="tab" data-toggle="tab">
+                        Presse
+                    </a>
+                </li>
+            </ul>
+            <div class="tab-content hidden-sm hidden-xs">
+                <div role="tabpanel" class="tab-pane active" id="tab1">
+                    {{ include('frontend/agenda_include.html.twig') }}
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-12">
+            <article class="post-detail">
+                <h1>La presse parle de nous</h1>
+
+                {% for presse in presses %}
+
+                    <div class="row" style="border-bottom: solid 1px #cccccc">
+                        <div class="col-md-4">
+                            <p class="text-justify">
+                                <a href="{{ absolute_url(path('frontend_presse_show', {'slug': presse.slug}) )}}">
+                                    <strong>{{ presse.organe }}</strong>
+                                </a> <br> {{ presse.publishedAt|date('d-m-Y') }}
+                            </p>
+                        </div>
+                        <div class="col-md-8">
+                            <p class="text-justify">
+                                <a href="{{ absolute_url(path('frontend_presse_show', {'slug': presse.slug})) }}">{{ presse.titre }}</a>
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+
+
+            </article>
+
+        </div>
+    </div>
+{% endblock %}

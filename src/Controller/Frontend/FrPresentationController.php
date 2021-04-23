@@ -5,6 +5,7 @@ namespace App\Controller\Frontend;
 use App\Entity\Agenda;
 use App\Entity\Historique;
 use App\Entity\Presentation;
+use App\Entity\Presse;
 use App\Entity\Statut;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,6 +36,28 @@ class FrPresentationController extends AbstractController
                 'statut' => $this->getDoctrine()->getRepository(Statut::class)->findOneBy([],['id'=>"DESC"]),
                 'agendas' => $agendas
             ]);
+        }elseif ($slug === 'presse'){
+            return $this->render('frontend/presses.html.twig',[
+                'presses' => $this->getDoctrine()->getRepository(Presse::class)->findBy([],['publishedAt'=>"DESC"]),
+                'agendas' => $agendas,
+                'pagination' => false
+            ]);
+        }else{
+            return $this->render('frontend/presentation.html.twig',[
+                'article' => $this->getDoctrine()->getRepository(Presentation::class)->findOneBy([],['id'=>"DESC"]),
+                'agendas' => $agendas
+            ]);
         }
+    }
+
+    /**
+     * @Route("/presse/{slug}", name="frontend_presse_show", methods={"GET"})
+     */
+    public function presse(Presse $presse)
+    {
+        return $this->render('frontend/presse.html.twig',[
+            'presse' => $presse,
+            'agendas' => $this->getDoctrine()->getRepository(Agenda::class)->getEncours(),
+        ]);
     }
 }
