@@ -1,0 +1,76 @@
+{% extends 'backend_layout.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+    <div class="az-content pd-y-20 pd-lg-y-30 pd-xl-y-40">
+        <div class="container">
+            <div class="az-content-left az-content-left-components">
+                {{ include('dashbord/menu_page.html.twig') }}
+
+            </div>
+            <div class="az-content-body pd-lg-l-40 d-flex flex-column">
+                <div class="az-content-breadcrumb">
+                    <span>Backoffice</span>
+                    <span>Page</span>
+                    <span>Contact</span>
+                </div>
+                <h2 class="az-content-title">Gestion du contact</h2>
+
+                <div class="az-content-label mg-b-5"></div>
+
+                <div class="mb-5 text-right">
+                    <a href="{{ path('backend_contact_index') }}" class="btn btn-outline-primary"><i class="fa fa-reply"></i> Liste</a>
+                </div>
+
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{message|raw}}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+                <table class="table table-striped" border="0">
+                    <tbody>
+                    <tr>
+                        <th>Adresse</th>
+                        <td>{{ contact.adresse }}</td>
+                    </tr>
+                    <tr>
+                        <th>Bp</th>
+                        <td>{{ contact.bp }}</td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>{{ contact.phone }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ contact.email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Map</th>
+                        <td>{{ contact.map }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div class="row mt-5">
+                    <div class="col-sm-2 offset-8 text-right">
+                        <a href="{{ path('backend_contact_edit', {'id': contact.id}) }}" class="btn btn-primary"><i class="fa fa-edit"></i> Modifier</a>
+                    </div>
+                    <div class="col-sm-2 text-left">
+                        {{ include('contact/_delete_form.html.twig') }}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

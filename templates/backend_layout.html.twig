@@ -65,7 +65,7 @@
                                 <a href="#" class="nav-link">Referentiel</a>
                                 <a href="#" class="nav-link">Base Form</a>
                                 <a href="#" class="nav-link">Galerie</a>
-                                <a href="#" class="nav-link">Contact</a>
+                                <a href="{{ path('backend_contact_new') }}" class="nav-link">Contact</a>
                                 <a href="{{ path('backend_newsletter_index') }}" class="nav-link">Newsletter</a>
                             </nav>
                         </li>
@@ -95,7 +95,7 @@
         {% block body %}{% endblock %}
         <div class="az-footer ht-40">
             <div class="container-fluid pd-t-0-f ht-100p">
-                <span>&copy; 2020 Dream Maker  </span>
+                <span>&copy; 2020-{{ "now"|date('Y') }} Dream Maker  </span>
             </div>
         </div>
         {% block javascripts %}

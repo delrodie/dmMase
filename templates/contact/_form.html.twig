@@ -1,0 +1,22 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-md-10 offset-1">
+        <div class="row form-group d-md-flex">
+            <div class="col-md-6 mg-b-20">{{ form_row(form.adresse) }}</div>
+            <div class="col-md-6 mg-b-20">{{ form_row(form.bp) }}</div>
+        </div>
+        <div class="row form-group d-md-flex">
+            <div class="col-md-6 mg-b-20">{{ form_row(form.phone) }}</div>
+            <div class="col-md-6 mg-b-20">{{ form_row(form.email) }}</div>
+        </div>
+        <div class="row form-group d-md-flex">
+            <div class="col-md-12 mg-b-20">{{ form_row(form.map) }}</div>
+        </div>
+    </div>
+</div>
+{{ form_widget(form) }}
+    <div class="text-right mt-5">
+        <button class="btn btn-primary"><i class="fa fa-save"></i> {{ button_label|default('Enregistrer') }}</button>
+    </div>
+
+{{ form_end(form) }}
