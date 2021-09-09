@@ -16,8 +16,9 @@ class GestionMedia
     private $mediaRex;
     private $mediaActualite;
     private $mediaPresse;
+    private $mediaDocument;
 
-    public function __construct($slideDirectory, $missionDirectory, $agendaDirectory, $rexDirectory, $actualiteDirectory, $presseDirectory)
+    public function __construct($slideDirectory, $missionDirectory, $agendaDirectory, $rexDirectory, $actualiteDirectory, $presseDirectory, $documentDirectory)
     {
         $this->mediaSlide = $slideDirectory;
         $this->mediaMission = $missionDirectory;
@@ -25,6 +26,7 @@ class GestionMedia
         $this->mediaRex = $rexDirectory;
         $this->mediaActualite = $actualiteDirectory;
         $this->mediaPresse = $presseDirectory;
+        $this->mediaDocument = $documentDirectory;
     }
 
     /**
@@ -51,6 +53,7 @@ class GestionMedia
             elseif ($media === 'rex') $file->move($this->mediaRex, $newFilename);
             elseif ($media === 'actualite') $file->move($this->mediaActualite, $newFilename);
             elseif ($media === 'presse') $file->move($this->mediaPresse, $newFilename);
+            elseif ($media === 'document') $file->move($this->mediaDocument, $newFilename);
             else $file->move($this->mediaSlide, $newFilename);
         }catch (FileException $e){
 
@@ -69,11 +72,12 @@ class GestionMedia
     public function removeUpload($ancienMedia, $media = null)
     {
         if ($media === 'slide') unlink($this->mediaSlide.'/'.$ancienMedia);
-        if ($media === 'mission') unlink($this->mediaMission.'/'.$ancienMedia);
-        if ($media === 'agenda') unlink($this->mediaAgenda.'/'.$ancienMedia);
-        if ($media === 'rex') unlink($this->mediaRex.'/'.$ancienMedia);
-        if ($media === 'actualite') unlink($this->mediaActualite.'/'.$ancienMedia);
-        if ($media === 'presse') unlink($this->mediaPresse.'/'.$ancienMedia);
+        elseif ($media === 'mission') unlink($this->mediaMission.'/'.$ancienMedia);
+        elseif ($media === 'agenda') unlink($this->mediaAgenda.'/'.$ancienMedia);
+        elseif ($media === 'rex') unlink($this->mediaRex.'/'.$ancienMedia);
+        elseif ($media === 'actualite') unlink($this->mediaActualite.'/'.$ancienMedia);
+        elseif ($media === 'presse') unlink($this->mediaPresse.'/'.$ancienMedia);
+        elseif ($media === 'document') unlink($this->mediaDocument.'/'.$ancienMedia);
         else return false;
 
         return true;
