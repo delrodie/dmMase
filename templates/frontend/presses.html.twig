@@ -36,8 +36,15 @@
                         </div>
                         <div class="col-md-8">
                             <p class="text-justify">
-                                <a href="{{ absolute_url(path('frontend_presse_show', {'slug': presse.slug})) }}">{{ presse.titre }}</a>
+                                <a href="#" id="lien"  data-toggle="myModal" data-target=".presse{{ presse.id }}">{{ presse.titre }}</a>
                             </p>
+                        </div>
+                    </div>
+                    <div class="modal fade" id=".presse{{ presse.id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                {{ render(url('frontend_presse_show',{'slug': presse.slug})) }}
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
@@ -47,4 +54,13 @@
 
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $('#lien').click(function () {
+            $('#myModal').modal()
+        })
+
+    </script>
 {% endblock %}

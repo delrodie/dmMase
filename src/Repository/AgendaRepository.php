@@ -27,7 +27,8 @@ class AgendaRepository extends ServiceEntityRepository
     public function getEncours()
     {
         return $this->createQueryBuilder('a')
-            ->where(':date BETWEEN a.dateDebut AND a.dateFin')
+            ->where(':date <= a.dateDebut')
+            ->orWhere(':date <= a.dateFin' )
             ->orderBy('a.dateDebut', "ASC")
             ->setParameter('date', date('Y-m-d', time()))
             ->getQuery()->getResult()

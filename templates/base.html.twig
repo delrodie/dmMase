@@ -178,7 +178,7 @@
                                     </div>
                                     <div class="col-md-4">
                                         <ul class="submenu2">
-                                            <li><a href="{{ absolute_url(path('frontend_presentation', {'slug': 'statut'}) ) }}">Statut</a></li>
+                                            <li><a href="{{ absolute_url(path('frontend_presentation', {'slug': 'statut'}) ) }}">Statuts</a></li>
                                             <li><a href="{{ absolute_url(path('frontend_presentation', {'slug': 'reglement'}) ) }}">Reglement interieur</a></li>
                                             <li><a href="#">Document</a></li>
                                         </ul>
@@ -187,7 +187,11 @@
                             </div>
                         </li>
                         <li>
-                            <a href="{{ absolute_url(path('frontend_actualite_liste') ) }}">Actualités</a>
+                            <a href="#">Actualités <span></span></a>
+                            <ul class="submenu">
+                                <li><a href="{{ absolute_url(path('frontend_actualite_liste') ) }}">Activités</a></li>
+                                <li><a href="#">Bulletin d'informations</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="{{ absolute_url(path('frontend_referentiel') )}}">Referentiel </a>
