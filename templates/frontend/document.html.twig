@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <iframe src="{{ absolute_url(asset('/doc/referentiel/referention-2014.pdf')) }}" width="97%" height="1000" frameborder="0"></iframe>
+    </div>
+{% endblock %}
+
+{% block title %}{{ document.titre }}{% endblock %}
+
