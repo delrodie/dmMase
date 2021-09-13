@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="container">
-        <iframe src="{{ absolute_url(asset('/doc/referentiel/Referentiel-MASE-Vs-2014.pdf')) }}" width="97%" height="1000" frameborder="0"></iframe>
+        <iframe src="{{ absolute_url(asset('uploads/documents/'~ document.media )) }}" width="97%" height="1000" frameborder="0"></iframe>
     </div>
 {% endblock %}
 
