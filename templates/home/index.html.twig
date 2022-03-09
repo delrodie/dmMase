@@ -49,11 +49,11 @@
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="spotlight-item-thumb">
                                 <div class="spotlight-item-thumb-img">
-                                    <a href="#">
+                                    <a href="{{ absolute_url(path('frontend_actualite_show',{"slug": actualite.slug})) }}">
                                         <img alt="{{ actualite.titre }}" src="{{ absolute_url(asset('uploads/actualites/'~ actualite.media)) }}" />
                                     </a>
                                 </div>
-                                <h3><a href="#">{{ actualite.titre }}</a></h3>
+                                <h3><a href="{{ absolute_url(path('frontend_actualite_show',{"slug": actualite.slug})) }}">{{ actualite.titre }}</a></h3>
                                 <div class="meta-post">
                                     <span>{{ actualite.createdAt|date('d-m-Y') }}</span>
                                 </div>

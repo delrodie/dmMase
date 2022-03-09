@@ -197,7 +197,11 @@
                             <a href="{{ absolute_url(path('frontend_referentiel') )}}">Referentiel </a>
                         </li>
                         <li>
-                            <a href="#">Base Form </a>
+                            <a href="#">Adhésion <span></span></a>
+                            <ul class="submenu">
+                                <li><a href="#">Entreprises Utilisatrices EU</a></li>
+                                <li><a href="#">Entreprises Intervenantes EI</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="#">Galerie </a>
@@ -227,7 +231,7 @@
                                     <img alt="" src="{{ absolute_url(asset('ressources/images/logo-mase_bw.png')) }}" width="150" />
                                 </a>
                                 <p class="presentation">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam, aliquid amet dolor ea excepturi minus quidem quod vero voluptatum? Dolore eaque eligendi hic impedit numquam pariatur ratione velit! Exercitationem!
+                                    {{ render(url('app_presentation_footer')) }}
                                 </p>
                             </div>
                         </div>

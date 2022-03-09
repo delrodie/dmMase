@@ -55,11 +55,18 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/classic/ckeditor.js"></script>
     <script>
-        var quill = new Quill('#mission_contenu', {
-            theme: 'snow'
-        });
+        ClassicEditor
+                .create( document.querySelector( '#mission_contenu' ) )
+                .then( editor => {
+                    console.log( editor );
+                } )
+                .catch( error => {
+                    console.error( error );
+                } );
+    </script>
+    <script>
 
         $("input[data-preview]").change(function() {
             var $input = $(this);

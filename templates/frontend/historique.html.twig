@@ -6,19 +6,21 @@
             {{ include('frontend/presentation_include.html.twig') }}
 
             <!-- Agenda -->
-            <ul role="tablist" class="tab-popular hidden-sm hidden-xs">
-                <li class="active">
-                    <a href="#tab1" role="tab" data-toggle="tab">
-                        AGENDA
-                    </a>
-                </li>
-            </ul>
-            <div class="tab-content hidden-sm hidden-xs">
-                <div role="tabpanel" class="tab-pane active" id="tab1">
-                    {{ include('frontend/agenda_include.html.twig') }}
+            {% if agendas %}
+                <ul role="tablist" class="tab-popular hidden-sm hidden-xs">
+                    <li class="active">
+                        <a href="#tab1" role="tab" data-toggle="tab">
+                            AGENDA
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content hidden-sm hidden-xs">
+                    <div role="tabpanel" class="tab-pane active" id="tab1">
+                        {{ include('frontend/agenda_include.html.twig') }}
 
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         </div>
         <div class="col-md-8 col-sm-12">
             <article class="post-detail">

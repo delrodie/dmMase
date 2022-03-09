@@ -6,6 +6,7 @@ use App\Entity\Actualite;
 use App\Entity\Agenda;
 use App\Entity\Faq;
 use App\Entity\Mission;
+use App\Entity\Presentation;
 use App\Entity\Rex;
 use App\Entity\Slider;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,4 +31,14 @@ class HomeController extends AbstractController
             'entreprise' => false
         ]);
     }
+	
+	/**
+	 * @Route("/presentation-footer", name="app_presentation_footer")
+	 */
+	public function footer()
+	{
+		return $this->render('home/footer.html.twig',[
+			'presentation' => $this->getDoctrine()->getRepository(Presentation::class)->findOneBy([],['id'=>"DESC"]),
+		]);
+	}
 }
