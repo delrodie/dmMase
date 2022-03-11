@@ -1,0 +1,79 @@
+{% extends 'backend_layout.html.twig' %}
+
+{% block title %}{{ parent() }} Gestion du Conseil d'Administration{% endblock %}
+
+{% block body %}
+    <div class="az-content pd-y-20 pd-lg-y-30 pd-xl-y-40">
+        <div class="container">
+            <div class="az-content-left az-content-left-components">
+                {{ include('dashbord/menu_presentation.html.twig') }}
+
+            </div>
+            <div class="az-content-body pd-lg-l-40 d-flex flex-column">
+                <div class="az-content-breadcrumb">
+                    <span>Backoffice</span>
+                    <span>L'Association</span>
+                    <span>Conseil d'Administration</span>
+                </div>
+                <h2 class="az-content-title">Gestion du conseil d'Administration et du comité de pilotage</h2>
+
+                <div class="az-content-label mg-b-5"></div>
+                <p class="mg-b-20"></p>
+
+                <div class="mb-5 text-right">
+                    <a href="{{ path('backend_portrait_new') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Ajouter</a>
+                </div>
+
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{message|raw}}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+                <div class="table-responsive">
+                    <table class="table table-hover mg-b-0">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>INSTANCE</th>
+                            <th>NOM & PRENOMS</th>
+                            <th>FONCTIONS</th>
+                            <th>ORDRE</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for portrait in portraits %}
+                            <tr>
+                                <th scope="row">{{ loop.index }}</th>
+                                <td>{{ portrait.instance.libelle }}</td>
+                                <td>
+                                    <a href="#" data-toggle="modal" data-target="#slide{{ portrait.id }}">{{ portrait.nom }} {{ portrait.prenoms }}</a>
+                                </td>
+                                <td>{{ portrait.fonction }}</td>
+                                <td>{{ portrait.ordre }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="4" class="text-center" style="font-size: 1.3rem;">
+                                    <em> Aucune biographie</em>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% for portrait in portraits %}
+        <div id="slide{{ portrait.id }}" class="modal">
+            {{ render(url('backend_portrait_show',{'id':portrait.id})) }}
+        </div>
+    {% endfor %}
+{% endblock %}

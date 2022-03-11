@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('backend_portrait_delete', {'id': portrait.id}) }}" onsubmit="return confirm('Voulez-vous supprimer cette biographie?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ portrait.id) }}">
+    <button class="btn btn-danger">Supprimer</button>
+</form>

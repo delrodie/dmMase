@@ -40,3 +40,4 @@ services:
             $actualiteDirectory: '%kernel.project_dir%/public/uploads/actualites'
             $presseDirectory: '%kernel.project_dir%/public/uploads/presses'
             $documentDirectory: '%kernel.project_dir%/public/uploads/documents'
+            $portraitDirectory: '%kernel.project_dir%/public/uploads/portrait'

@@ -1,0 +1,27 @@
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+            <h6 class="modal-title">{{ portrait.nom }} {{ portrait.prenoms }}</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p class="text-justify">
+                {% if portrait.media %}
+                    <img src="{{ absolute_url(asset('uploads/portrait/'~ portrait.media)) }}" alt="" class="img-thumbnail" style="margin-bottom: 15px; min-width: 200px">
+                {% else %}
+                    <img src="{{ absolute_url(asset('backoffice/images/avatar.png')) }}" alt="" class="img-thumbnail" style="margin-bottom: 15px;">
+                {% endif %}
+                <h6>{{ portrait.fonction }}</h6>
+
+                {{ portrait.biographie|raw }}
+            </p>
+        </div><!-- modal-body -->
+        <div class="modal-footer">
+            {{ include('portrait/_delete_form.html.twig') }}
+            <a href="{{ path('backend_portrait_edit', {'slug':  portrait.slug}) }}" class="btn btn-primary">Modifier</a>
+            <button type="button" data-dismiss="modal" class="btn btn-outline-light">Fermer</button>
+        </div>
+    </div>
+</div>

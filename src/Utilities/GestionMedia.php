@@ -17,8 +17,9 @@ class GestionMedia
     private $mediaActualite;
     private $mediaPresse;
     private $mediaDocument;
+	private $mediaPortrait;
 
-    public function __construct($slideDirectory, $missionDirectory, $agendaDirectory, $rexDirectory, $actualiteDirectory, $presseDirectory, $documentDirectory)
+    public function __construct($slideDirectory, $missionDirectory, $agendaDirectory, $rexDirectory, $actualiteDirectory, $presseDirectory, $documentDirectory, $portraitDirectory)
     {
         $this->mediaSlide = $slideDirectory;
         $this->mediaMission = $missionDirectory;
@@ -27,6 +28,7 @@ class GestionMedia
         $this->mediaActualite = $actualiteDirectory;
         $this->mediaPresse = $presseDirectory;
         $this->mediaDocument = $documentDirectory;
+		$this->mediaPortrait = $portraitDirectory;
     }
 
     /**
@@ -54,6 +56,7 @@ class GestionMedia
             elseif ($media === 'actualite') $file->move($this->mediaActualite, $newFilename);
             elseif ($media === 'presse') $file->move($this->mediaPresse, $newFilename);
             elseif ($media === 'document') $file->move($this->mediaDocument, $newFilename);
+            elseif ($media === 'portrait') $file->move($this->mediaPortrait, $newFilename);
             else $file->move($this->mediaSlide, $newFilename);
         }catch (FileException $e){
 
@@ -78,6 +81,7 @@ class GestionMedia
         elseif ($media === 'actualite') unlink($this->mediaActualite.'/'.$ancienMedia);
         elseif ($media === 'presse') unlink($this->mediaPresse.'/'.$ancienMedia);
         elseif ($media === 'document') unlink($this->mediaDocument.'/'.$ancienMedia);
+        elseif ($media === 'portrait') unlink($this->mediaPortrait.'/'.$ancienMedia);
         else return false;
 
         return true;

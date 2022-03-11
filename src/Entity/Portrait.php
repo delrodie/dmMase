@@ -47,6 +47,16 @@ class Portrait
      */
     private $biographie;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $media;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Instance::class)
+     */
+    private $instance;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +130,30 @@ class Portrait
     public function setBiographie(?string $biographie): self
     {
         $this->biographie = $biographie;
+
+        return $this;
+    }
+
+    public function getMedia(): ?string
+    {
+        return $this->media;
+    }
+
+    public function setMedia(?string $media): self
+    {
+        $this->media = $media;
+
+        return $this;
+    }
+
+    public function getInstance(): ?Instance
+    {
+        return $this->instance;
+    }
+
+    public function setInstance(?Instance $instance): self
+    {
+        $this->instance = $instance;
 
         return $this;
     }
