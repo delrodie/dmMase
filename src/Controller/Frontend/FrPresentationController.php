@@ -42,6 +42,12 @@ class FrPresentationController extends AbstractController
                 'agendas' => $agendas,
                 'pagination' => false
             ]);
+        }elseif ($slug === 'conseil-administration'){
+            return $this->render('frontend/cadministration.html.twig',[
+                'presses' => $this->getDoctrine()->getRepository(Presse::class)->findBy([],['publishedAt'=>"DESC"]),
+                'agendas' => $agendas,
+                'pagination' => false
+            ]);
         }else{
             return $this->render('frontend/presentation.html.twig',[
                 'article' => $this->getDoctrine()->getRepository(Presentation::class)->findOneBy([],['id'=>"DESC"]),

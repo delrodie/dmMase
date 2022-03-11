@@ -13,15 +13,15 @@
                 <div class="az-content-breadcrumb">
                     <span>Backoffice</span>
                     <span>Administrateur</span>
-                    <span>Utilisateur</span>
+                    <span>Instance</span>
                 </div>
-                <h2 class="az-content-title">Gestion des utilisateurs</h2>
+                <h2 class="az-content-title">Gestion des instances</h2>
 
                 <div class="az-content-label mg-b-5"></div>
                 <p class="mg-b-20"></p>
 
                 <div class="mb-5 text-right">
-                    <a href="{{ path('admin_user_new') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Ajouter</a>
+                    <a href="{{ path('backend_instance_new') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Ajouter</a>
                 </div>
 
                 {% for label, messages in app.flashes %}
@@ -40,31 +40,21 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Emails</th>
-                            <th>Status</th>
+                            <th>Libelle</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {% for user in users %}
+                        {% for instance in instances %}
                             <tr>
                                 <th scope="row">{{ loop.index }}</th>
                                 <td>
-                                    <a href="#" data-toggle="modal" data-target="#slide{{ user.id }}">{{ user.email }}</a>
-                                </td>
-                                <td>
-                                    {% if user.roles[0] == 'ROLE_ADMIN' %}
-                                        <span class="badge badge-success">Administrateur</span>
-                                    {% elseif user.roles[0] == 'ROLE_EDIT' %}
-                                        <span class="badge badge-info">Editeur</span>
-                                    {% else %}
-                                        <span class="badge badge-warning">Utilisateur</span>
-                                    {% endif %}
+                                    <a href="{{ path('backend_instance_edit', {'id': instance.id}) }}">{{ instance.libelle }}</a>
                                 </td>
                             </tr>
                         {% else %}
                             <tr>
                                 <td colspan="4" class="text-center" style="font-size: 1.3rem;">
-                                    <em> Aucun utilisateur</em>
+                                    <em> Aucune instance</em>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -75,9 +65,5 @@
             </div>
         </div>
     </div>
-    {% for user in users %}
-        <div id="slide{{ user.id }}" class="modal">
-            {{ render(url('admin_user_show',{'id':user.id})) }}
-        </div>
-    {% endfor %}
+
 {% endblock %}
