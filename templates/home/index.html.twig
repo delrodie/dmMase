@@ -139,57 +139,62 @@
             </div>
         {% endif %}
     </div>
-    <div class="row faq" id="faq">
-        <div class="col-md-8">
-            <section class="spotlight-thumbs">
-                <div class="box-caption">
-                    <span> Foire Aux Questions</span>
-                </div>
-                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                    {% for faq in faqs %}
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="heading{{ loop.index }}">
-                                <h4 class="panel-title">
-                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ loop.index }}" aria-expanded="{% if loop.first %}true{% else %}false{% endif %}" aria-controls="collapse{{ loop.index }}">
-                                        {{ faq.question}}
-                                    </a>
-                                </h4>
+    {% if faqs %}
+        <div class="row faq" id="faq">
+            <div class="col-md-8">
+                <section class="spotlight-thumbs">
+                    <div class="box-caption">
+                        <span> Foire Aux Questions</span>
+                    </div>
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        {% for faq in faqs %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="heading{{ loop.index }}">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ loop.index }}" aria-expanded="{% if loop.first %}true{% else %}false{% endif %}" aria-controls="collapse{{ loop.index }}">
+                                            {{ faq.question}}
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse{{ loop.index }}" class="panel-collapse collapse {% if loop.first %}in{% endif %}" role="tabpanel" aria-labelledby="heading{{ loop.index }}">
+                                    <div class="panel-body">
+                                        {{ faq.solution|raw }}
+                                    </div>
+                                </div>
                             </div>
-                            <div id="collapse{{ loop.index }}" class="panel-collapse collapse {% if loop.first %}in{% endif %}" role="tabpanel" aria-labelledby="heading{{ loop.index }}">
-                                <div class="panel-body">
-                                    {{ faq.solution|raw }}
+                        {% endfor %}
+
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-4">
+                {{ render(url('frontend_newsletter_new')) }}
+            </div>
+        </div>
+    {% endif %}
+    {% if rexes %}
+        <div class="row rex" id="rex">
+            <div class="col-md-12 col-md-offset-0 col-sm-8 col-xs-12 hidden-xs">
+                <div class="box-caption">
+                    <span> Retour d'Expériences</span>
+                </div>
+                <div class="owl-carousel owl-special">
+                    {% for rex in rexes %}
+                        <div>
+                            <div class="special-rex text-center">
+                                <a href="#" class="text-center">
+                                    <img alt="{{ rex.entreprise }}" src="{{ absolute_url(asset('uploads/rex/'~ rex.media)) }}"  />
+                                </a>
+                                <h3><a href="#">{{ rex.entreprise }} </a></h3>
+                                <div class="meta-post">
+                                    <p>{{ rex.message|raw }}</p>
                                 </div>
                             </div>
                         </div>
                     {% endfor %}
-
                 </div>
-            </section>
-        </div>
-        <div class="col-md-4">
-            {{ render(url('frontend_newsletter_new')) }}
-        </div>
-    </div>
-    <div class="row rex" id="rex">
-        <div class="col-md-12 col-md-offset-0 col-sm-8 col-xs-12 hidden-xs">
-            <div class="box-caption">
-                <span> Retour d'Expériences</span>
-            </div>
-            <div class="owl-carousel owl-special">
-                {% for rex in rexes %}
-                    <div>
-                        <div class="special-rex text-center">
-                            <a href="#" class="text-center">
-                                <img alt="{{ rex.entreprise }}" src="{{ absolute_url(asset('uploads/rex/'~ rex.media)) }}"  />
-                            </a>
-                            <h3><a href="#">{{ rex.entreprise }} </a></h3>
-                            <div class="meta-post">
-                                <p>{{ rex.message|raw }}</p>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
             </div>
         </div>
-    </div>
+    {% endif %}
+
 {% endblock %}
