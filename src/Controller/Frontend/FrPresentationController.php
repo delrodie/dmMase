@@ -4,6 +4,7 @@ namespace App\Controller\Frontend;
 
 use App\Entity\Agenda;
 use App\Entity\Historique;
+use App\Entity\Portrait;
 use App\Entity\Presentation;
 use App\Entity\Presse;
 use App\Entity\Statut;
@@ -44,7 +45,13 @@ class FrPresentationController extends AbstractController
             ]);
         }elseif ($slug === 'conseil-administration'){
             return $this->render('frontend/cadministration.html.twig',[
-                'presses' => $this->getDoctrine()->getRepository(Presse::class)->findBy([],['publishedAt'=>"DESC"]),
+                'portraits' => $this->getDoctrine()->getRepository(Portrait::class)->findByInstance('conseil'),
+                'agendas' => $agendas,
+                'pagination' => false
+            ]);
+        }elseif ($slug === 'comite-de-pilotage'){
+            return $this->render('frontend/copilotage.html.twig',[
+                'portraits' => $this->getDoctrine()->getRepository(Portrait::class)->findByInstance('pilotage'),
                 'agendas' => $agendas,
                 'pagination' => false
             ]);

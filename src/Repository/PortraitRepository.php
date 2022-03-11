@@ -18,6 +18,22 @@ class PortraitRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Portrait::class);
     }
+	
+	/**
+	 * @param $string
+	 * @return float|int|mixed|string
+	 */
+	public function findByInstance($string)
+	{
+		return $this->createQueryBuilder('p')
+			->addSelect('i')
+			->leftJoin('p.instance', 'i')
+			->where('i.libelle LIKE :str')
+			->orderBy('p.ordre', 'ASC')
+			->setParameter('str', '%'.$string.'%')
+			->getQuery()->getResult()
+			;
+	}
 
     // /**
     //  * @return Portrait[] Returns an array of Portrait objects
