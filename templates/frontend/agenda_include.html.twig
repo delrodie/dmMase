@@ -15,7 +15,7 @@
                             <img alt="{{ agenda.titre }}" src="{{ absolute_url(asset('uploads/agenda/'~ agenda.media)) }}" width="100">
                         </a>
                         <h3><a href="{{ absolute_url(path('frontend_agenda_show', {'slug': agenda.slug}) )}}">{{ agenda.titre}}</a></h3>
-                        <p>{{ agenda.contenu|raw|slice(0,80) }}...</p>
+                        <p>{{ agenda.contenu|raw|slice(0,80)|raw }}...</p>
                         <div class="meta-post">
                             <a href="#" title="Début période">
                                 <i class="fa fa-calendar"></i> {{ agenda.dateDebut|date('d/m/Y') }}

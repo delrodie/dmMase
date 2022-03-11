@@ -20,7 +20,7 @@
                                 <div class="meta-post">
                                     <span> {{ agenda.dateDebut|date("d/m/Y") }} - {{ agenda.dateFin|date('d/m/Y') }}</span>
                                 </div>
-                                <p>{{ agenda.contenu|raw|slice(0,200) }}...</p>
+                                <p>{{ agenda.contenu|raw|slice(0,200)|raw }}...</p>
                             </div>
                         </div>
                     </article>
