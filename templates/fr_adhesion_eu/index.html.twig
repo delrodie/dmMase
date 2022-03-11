@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %} Conseil d'administration{% endblock %}
+{% block title %} Formulaire d'adhesion des entreprises utilisatrices{% endblock %}
 {% block body %}
     <div class="row">
         <div class="col-md-4 col-sm-12">
@@ -45,23 +45,25 @@
             {% endif %}
         </div>
         <div class="col-md-8 col-sm-12">
-            <article class="post-detail">
-                <h1>Conseil d'administration</h1>
-                <div class="row">
-                    {% for portrait in portraits %}
-                        <div class="col-md-4 portrait">
-                            {% if portrait.media %}
-                                <img src="{{ absolute_url(asset('uploads/portrait/'~ portrait.media)) }}" alt="{{ portrait.nom }} {{ portrait.prenoms }}">
-                            {% else %}
-                                <img src="{{ absolute_url(asset('backoffice/images/avatar.png')) }}" alt="">
-                            {% endif %}
-                            <div class="text-center">
-                                <h1>{{portrait.nom|upper}} {{ portrait.prenoms|title }}</h1>
-                                <h3>{{ portrait.fonction }}</h3>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
+            <article class="post-detail adhesion">
+                <h1>Formulaire d'identification</h1>
+                <h3>Entreprise utilisatrice</h3>
+                {{ form_start(form) }}
+                    <div class="row form-group">
+                        <div class="col-md-6">{{ form_row(form.raisonSociale) }}</div>
+                        <div class="col-md-6">{{ form_row(form.siege) }}</div>
+                        <div class="col-md-6">{{ form_row(form.adresse) }}</div>
+                        <div class="col-md-6">{{ form_row(form.telephone) }}</div>
+                        <div class="col-md-6">{{ form_row(form.email) }}</div>
+                        <div class="col-md-6">{{ form_row(form.annee) }}</div>
+                        <div class="col-md-12 mt-3">{{ form_row(form.domaine) }}</div>
+                        <div class="col-md-6">{{ form_row(form.logo) }}</div>
+                    </div>
+                    <div class="text-right">
+                        {{ form_widget(form) }}
+                        <button class="btn btn-primary">Envoyer</button>
+                    </div>
+                {{ form_end(form) }}
 
             </article>
 
@@ -71,34 +73,22 @@
 {% block stylesheets %}
     {{ parent() }}
     <style>
-        .portrait{
-            margin: 25px auto;
-            text-align: center;
-            cursor: pointer;
-        }
-        .portrait:hover{
-            color: #0e2a00;
-        }
-        .portrait img{
-            max-width: 200px;
-            min-width: 150px;
-            text-align: center;
-        }
-        .portrait img:hover{
-            transform: scale(1.3);
-            transition: .3s ease-in-out;
-        }
-        .portrait h1{
+        .adhesion h3{
+            margin: 25px auto 25px;
             color: darkblue;
-            font-size: 1.8rem;
+            text-align: center;
         }
-        .portrait h3{
-            font-size: 1.5rem;
-            margin: 0;
+        .adhesion form{
+            margin-top: 50px;
         }
-        .portrait h1:hover,
-        .portrait h3:hover{
-            color: #0e2a00;
+        .adhesion label{
+            font-size: 1.4rem;
+        }
+        .adhesion div{
+            margin: 10px auto;
+        }
+        .adhesion button{
+            margin-top: 25px;
         }
     </style>
 {% endblock %}

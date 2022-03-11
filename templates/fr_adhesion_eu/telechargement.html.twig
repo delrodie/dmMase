@@ -1,0 +1,134 @@
+{% extends 'base.html.twig' %}
+{% block title %} Formulaire d'adhesion des entreprises utilisatrices{% endblock %}
+{% block body %}
+	<div class="row">
+		<div class="col-md-4 col-sm-12">
+			{{ include('frontend/presentation_include.html.twig') }}
+
+			<!-- Agenda -->
+			{% if agendas %}
+				<ul role="tablist" class="tab-popular hidden-sm hidden-xs">
+					<li class="active">
+						<a href="#tab1" role="tab" data-toggle="tab">
+							AGENDA
+						</a>
+					</li>
+				</ul>
+				<div class="tab-content hidden-sm hidden-xs">
+					<div role="tabpanel" class="tab-pane active" id="tab1">
+						<ul class="list-news-popular">
+							{% for agenda in agendas|slice(0,2) %}
+								<li>
+									<a href="{{ absolute_url(path('frontend_agenda_show', {'slug': agenda.slug}) )}}">
+										<img alt="{{ agenda.titre }}" src="{{ absolute_url(asset('uploads/agenda/'~ agenda.media)) }}" width="100">
+									</a>
+									<h3><a href="{{ absolute_url(path('frontend_agenda_show', {'slug': agenda.slug}) )}}">{{ agenda.titre}}</a></h3>
+									<p>{{ agenda.contenu|raw|slice(0,80) }}...</p>
+									<div class="meta-post">
+										<a href="#" title="Début période">
+											<i class="fa fa-calendar"></i> {{ agenda.dateDebut|date('d/m/Y') }}
+										</a>
+										<em></em>
+										<span>
+                               <a href="#" title="Fin période"><i class="fa fa-calendar"></i> {{  agenda.dateFin|date('d/m/Y') }}</a>
+                            </span>
+									</div>
+								</li>
+							{% endfor %}
+						</ul>
+						<div class="text-right all-agenda">
+							...<a href="{{ path('frontend_agenda_list') }}">... Tout l'agenda</a>
+						</div>
+
+					</div>
+				</div>
+			{% endif %}
+		</div>
+		<div class="col-md-8 col-sm-12">
+			<article class="post-detail adhesion information">
+				<h1>Formulaire d'identification</h1>
+				<h3>Entreprise utilisatrice</h3>
+				<div class="row">
+					<div class="col-md-4">
+						<img src="{{ absolute_url(asset('uploads/entreprise/'~ entreprise.logo)) }}" alt="{{ entreprise.raisonSociale }}">
+					</div>
+					<div class="col-md-8">
+						<div class="row">
+							<div class="col-md-12 col">
+								Raison social : <span>{{ entreprise.raisonSociale }}</span>
+							</div>
+							<div class="col-md-12 col">
+								Siège : <span>{{ entreprise.siege}}</span>
+							</div>
+							<div class="col-md-12 col">
+								Adresse : <span>{{  entreprise.adresse }}</span>
+							</div>
+							<div class="col-md-12 col">
+								Telephone : <span>{{ entreprise.telephone }}</span>
+							</div>
+							<div class="col-md-12 col">
+								Email : <span>{{entreprise.email}}</span>
+							</div>
+							<div class="col-md-12 col">
+								Année adhesion : <span>{{  entreprise.annee }}</span>
+							</div>
+							<div class="col-md-12 col">
+								Domaine d'activité : <span>{{ entreprise.domaine }}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<p>
+							Afin de finaliser votre adhésion, veuillez télécharger, remplir, signer et déposer
+							les fiches suivantes.
+						</p>
+					</div>
+					<div class="col-md-12">
+						<a href="{{ absolute_url(asset('doc/adhesion-eu/fiche-identification.docx')) }}"> <i class="fa fa-file-word-o fa-lg"></i> &nbsp;&nbsp; Fiche d'identification</a><br>
+						<a href="{{ absolute_url(asset('doc/adhesion-eu/fiche-de-demande-d_adhesion.docx')) }}"> <i class="fa fa-file-word-o fa-lg"></i> &nbsp;&nbsp; Fiche de demande adhésion MASE CÔTE D'IVOIRE EU</a><br>
+						<a href="{{ absolute_url(asset('doc/adhesion-eu/convention-de-partenariat.docx')) }}"> <i class="fa fa-file-word-o fa-lg"></i> &nbsp;&nbsp; Convention de partenariat MASE CÔTE D'IVOIRE - EU</a>
+					</div>
+				</div>
+			</article>
+
+		</div>
+	</div>
+{% endblock %}
+{% block stylesheets %}
+	{{ parent() }}
+	<style>
+        .adhesion h3{
+            margin: 25px auto 25px;
+            color: darkblue;
+            text-align: center;
+        }
+        .information{
+            font-size: 1.5rem;
+        }
+		.information span{
+            font-weight: bold;
+        }
+		.information .col{
+            margin-bottom: 5px;
+		}
+		.information img{
+			min-width: 150px;
+			max-width: 200px;
+		}
+		.information p{
+            font-style: italic;
+            font-size: 1.5rem;
+        }
+		.information a{
+			color: #0a47ff;
+            font-weight: bold;
+            margin-top: 10px;
+            padding-bottom: 20px;
+		}
+		.information a:hover{
+			color: #0e2a00;
+		}
+	</style>
+{% endblock %}
