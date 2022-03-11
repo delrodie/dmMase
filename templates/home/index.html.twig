@@ -24,13 +24,13 @@
                     </div>
                     <article class="news-two-large news-three-large">
                         <div class="row">
-                            <div class="col-md-8 col-sm-6 col-xs-12">
+                            <div class="col-md-6 col-sm-5 col-xs-12">
                                 <a href="{{ absolute_url(path("frontend_mission",{'mission': mission.id})) }}">
                                     <img alt="" src="{{ absolute_url(asset('uploads/mission/'~ mission.media)) }}" class="img-responsive" />
                                 </a>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                <p>{{ mission.contenu|raw|slice(0,400) }}...</p>
+                            <div class="col-md-6 col-sm-7 col-xs-12 text-justify">
+                                <p>{{ mission.contenu|slice(0,500)|raw }}...</p>
                             </div>
                         </div>
 
