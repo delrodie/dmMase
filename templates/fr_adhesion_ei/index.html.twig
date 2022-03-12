@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+{% block title %} Formulaire d'adhesion des entreprises intervenantes{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-4 col-sm-12">
+            {{ include('frontend/presentation_include.html.twig') }}
+
+            <!-- Agenda -->
+            {% if agendas %}
+                <ul role="tablist" class="tab-popular hidden-sm hidden-xs">
+                    <li class="active">
+                        <a href="#tab1" role="tab" data-toggle="tab">
+                            AGENDA
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content hidden-sm hidden-xs">
+                    <div role="tabpanel" class="tab-pane active" id="tab1">
+                        <ul class="list-news-popular">
+                            {% for agenda in agendas|slice(0,2) %}
+                                <li>
+                                    <a href="{{ absolute_url(path('frontend_agenda_show', {'slug': agenda.slug}) )}}">
+                                        <img alt="{{ agenda.titre }}" src="{{ absolute_url(asset('uploads/agenda/'~ agenda.media)) }}" width="100">
+                                    </a>
+                                    <h3><a href="{{ absolute_url(path('frontend_agenda_show', {'slug': agenda.slug}) )}}">{{ agenda.titre}}</a></h3>
+                                    <p>{{ agenda.contenu|raw|slice(0,80) }}...</p>
+                                    <div class="meta-post">
+                                        <a href="#" title="Début période">
+                                            <i class="fa fa-calendar"></i> {{ agenda.dateDebut|date('d/m/Y') }}
+                                        </a>
+                                        <em></em>
+                                        <span>
+                               <a href="#" title="Fin période"><i class="fa fa-calendar"></i> {{  agenda.dateFin|date('d/m/Y') }}</a>
+                            </span>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <div class="text-right all-agenda">
+                            ...<a href="{{ path('frontend_agenda_list') }}">... Tout l'agenda</a>
+                        </div>
+
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-md-8 col-sm-12">
+            <article class="post-detail adhesion">
+                <h1>Formulaire d'identification</h1>
+                <h3>Entreprise intervenante</h3>
+                {{ form_start(form) }}
+                <div class="row form-group">
+                    <div class="col-md-6">{{ form_row(form.raisonSociale) }}</div>
+                    <div class="col-md-6">{{ form_row(form.siege) }}</div>
+                    <div class="col-md-6">{{ form_row(form.adresse) }}</div>
+                    <div class="col-md-6">{{ form_row(form.telephone) }}</div>
+                    <div class="col-md-6">{{ form_row(form.email) }}</div>
+                    <div class="col-md-6">{{ form_row(form.annee) }}</div>
+                    <div class="col-md-12 mt-3">{{ form_row(form.domaine) }}</div>
+                    <div class="col-md-6">{{ form_row(form.logo) }}</div>
+                </div>
+                <div class="text-right">
+                    {{ form_widget(form) }}
+                    <button class="btn btn-primary">Envoyer</button>
+                </div>
+                {{ form_end(form) }}
+
+            </article>
+
+        </div>
+    </div>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .adhesion h3{
+            margin: 25px auto 25px;
+            color: darkblue;
+            text-align: center;
+        }
+        .adhesion form{
+            margin-top: 50px;
+        }
+        .adhesion label{
+            font-size: 1.4rem;
+        }
+        .adhesion div{
+            margin: 10px auto;
+        }
+        .adhesion button{
+            margin-top: 25px;
+        }
+    </style>
+{% endblock %}
