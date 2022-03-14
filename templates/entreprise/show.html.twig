@@ -1,66 +1,30 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Entreprise{% endblock %}
-
-{% block body %}
-    <h1>Entreprise</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entreprise.id }}</td>
-            </tr>
-            <tr>
-                <th>RaisonSociale</th>
-                <td>{{ entreprise.raisonSociale }}</td>
-            </tr>
-            <tr>
-                <th>Siege</th>
-                <td>{{ entreprise.siege }}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ entreprise.adresse }}</td>
-            </tr>
-            <tr>
-                <th>Telephone</th>
-                <td>{{ entreprise.telephone }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ entreprise.email }}</td>
-            </tr>
-            <tr>
-                <th>Annee</th>
-                <td>{{ entreprise.annee }}</td>
-            </tr>
-            <tr>
-                <th>Domaine</th>
-                <td>{{ entreprise.domaine }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ entreprise.type }}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ entreprise.slug }}</td>
-            </tr>
-            <tr>
-                <th>Valid</th>
-                <td>{{ entreprise.valid ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ entreprise.createdAt ? entreprise.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('entreprise_index') }}">back to list</a>
-
-    <a href="{{ path('entreprise_edit', {'id': entreprise.id}) }}">edit</a>
-
-    {{ include('entreprise/_delete_form.html.twig') }}
-{% endblock %}
+<div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content modal-content-demo">
+        <div class="modal-header">
+            <h6 class="modal-title">{{ entreprise.raisonSociale }}</h6>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p class="text-justify">
+                {% if entreprise.logo %}
+                    <img src="{{ absolute_url(asset('uploads/entreprise/'~ entreprise.logo)) }}" alt="" class="img-thumbnail" style="margin: auto 15px 15px auto; max-width: 200px; float: left">
+                {% endif %}
+                <div>Type: <strong>{{ entreprise.type }}</strong></div>
+                <div>Raison sociale: <strong>{{ entreprise.raisonSociale }}</strong></div>
+                <div>Siège: <strong>{{ entreprise.siege }}</strong></div>
+                <div>Adresse: <strong>{{ entreprise.adresse }}</strong></div>
+                <div>Email: <strong>{{ entreprise.email }}</strong></div>
+                <div>Telephone: <strong>{{ entreprise.telephone }}</strong></div>
+                <div>Annee: <strong>{{ entreprise.annee }}</strong></div>
+                <div>Domaine: <strong>{{ entreprise.domaine }}</strong></div>
+            </p>
+        </div><!-- modal-body -->
+        <div class="modal-footer">
+            {{ include('entreprise/_delete_form.html.twig') }}
+            <a href="{{ path('backend_entreprise_edit', {'id':  entreprise.id}) }}" class="btn btn-primary">Modifier</a>
+            <button type="button" data-dismiss="modal" class="btn btn-outline-light">Fermer</button>
+        </div>
+    </div>
+</div>

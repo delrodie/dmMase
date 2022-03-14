@@ -1,55 +1,79 @@
-{% extends 'base.html.twig' %}
+{% extends 'backend_layout.html.twig' %}
 
-{% block title %}Entreprise index{% endblock %}
+{% block title %}{{ parent() }} Gestion des entreprises{% endblock %}
 
 {% block body %}
-    <h1>Entreprise index</h1>
+    <div class="az-content pd-y-20 pd-lg-y-30 pd-xl-y-40">
+        <div class="container">
+            <div class="az-content-left az-content-left-components">
+                {{ include('dashbord/menu_adhesion.html.twig') }}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>RaisonSociale</th>
-                <th>Siege</th>
-                <th>Adresse</th>
-                <th>Telephone</th>
-                <th>Email</th>
-                <th>Annee</th>
-                <th>Domaine</th>
-                <th>Type</th>
-                <th>Slug</th>
-                <th>Valid</th>
-                <th>CreatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entreprise in entreprises %}
-            <tr>
-                <td>{{ entreprise.id }}</td>
-                <td>{{ entreprise.raisonSociale }}</td>
-                <td>{{ entreprise.siege }}</td>
-                <td>{{ entreprise.adresse }}</td>
-                <td>{{ entreprise.telephone }}</td>
-                <td>{{ entreprise.email }}</td>
-                <td>{{ entreprise.annee }}</td>
-                <td>{{ entreprise.domaine }}</td>
-                <td>{{ entreprise.type }}</td>
-                <td>{{ entreprise.slug }}</td>
-                <td>{{ entreprise.valid ? 'Yes' : 'No' }}</td>
-                <td>{{ entreprise.createdAt ? entreprise.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('entreprise_show', {'id': entreprise.id}) }}">show</a>
-                    <a href="{{ path('entreprise_edit', {'id': entreprise.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="13">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </div>
+            <div class="az-content-body pd-lg-l-40 d-flex flex-column">
+                <div class="az-content-breadcrumb">
+                    <span>Backoffice</span>
+                    <span>Adhesion</span>
+                    <span>Entreprise</span>
+                </div>
+                <h2 class="az-content-title">Gestion des adhésions</h2>
 
-    <a href="{{ path('entreprise_new') }}">Create new</a>
+                <div class="az-content-label mg-b-5"></div>
+                <p class="mg-b-20"></p>
+
+                <div class="mb-5 text-right">
+                    <a href="{{ path('backend_entreprise_new') }}" class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Ajouter</a>
+                </div>
+
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{message|raw}}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
+                <div class="table-responsive">
+                    <table class="table table-hover mg-b-0">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>INSTANCE</th>
+                            <th>RAISON SOCIALE</th>
+                            <th>EMAIL</th>
+                            <th>CONTACT</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for entreprise in entreprises %}
+                            <tr>
+                                <th scope="row">{{ loop.index }}</th>
+                                <td>{{ entreprise.type }}</td>
+                                <td>
+                                    <a href="#" data-toggle="modal" data-target="#slide{{ entreprise.id }}">{{ entreprise.raisonSociale }}</a>
+                                </td>
+                                <td>{{ entreprise.email }}</td>
+                                <td>{{ entreprise.telephone }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="4" class="text-center" style="font-size: 1.3rem;">
+                                    <em> Aucune adhésion</em>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% for entreprise in entreprises %}
+        <div id="slide{{ entreprise.id }}" class="modal">
+            {{ render(url('backend_entreprise_show',{'id':entreprise.id})) }}
+        </div>
+    {% endfor %}
 {% endblock %}

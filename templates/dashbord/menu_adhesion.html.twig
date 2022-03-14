@@ -1,0 +1,15 @@
+<div class="component-item">
+    <label>Menu Adhésion</label>
+    <nav class="nav flex-column">
+        <a href="{{ path('backend_entreprise_index') }}" class="nav-link {% if show == 'entreprise' %}active{% endif %}">Entreprise</a>
+        <a href="{{ path('backend_slider_index') }}" class="nav-link {% if show == 'slider' %}active{% endif %}">Contact</a>
+        <a href="{{ path('backend_agenda_index') }}" class="nav-link {% if show == 'agenda' %}active{% endif %}">Base Form</a>
+    </nav>
+
+    <label>Securité</label>
+    <nav class="nav flex-column">
+        <a href="#" class="nav-link">Mes actions</a>
+        <a href="#" class="nav-link">Changer mon mot de passe</a>
+        <a href="{{ path('app_logout') }}" class="nav-link">Déconnexion</a>
+    </nav>
+</div>

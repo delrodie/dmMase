@@ -1,4 +1,29 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="row form-group d-m-flex">
+        <div class="col-md-6 mt-3">{{ form_row(form.raisonSociale) }}</div>
+        <div class="col-md-6 mt-3">{{ form_row(form.siege) }}</div>
+        <div class="col-md-6 mt-3">{{ form_row(form.adresse) }}</div>
+        <div class="col-md-6 mt-3">{{ form_row(form.telephone) }}</div>
+        <div class="col-md-6 mt-3">{{ form_row(form.email) }}</div>
+        <div class="col-md-6 mt-3">{{ form_row(form.annee) }}</div>
+        <div class="col-md-12 mt-3">{{ form_row(form.domaine) }}</div>
+    </div>
+<div class="row form-group d-md-flex mt-3">
+    <div class="col-md-6 mg-b-20">
+        <img class="preview" />
+        <div class="custom-file">
+            {{ form_widget(form.logo) }}
+            <label class="custom-file-label" for="customFile">Télécharger la photo</label>
+        </div>
+    </div>
+    <div class="col-md-6 mg-b-20">
+        <img src="{{ absolute_url(asset('uploads/entreprise/'~ entreprise.logo)) }}" alt="" class="img-fluid" style="max-width: 200px">
+    </div>
+</div>
+<div class="row form-group d-md-flex">
+    <div class="col-md-12 mg-b-20 text-right">
+        {{ form_widget(form) }}
+        <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> &nbsp; {{ button_label|default('Enregistrer') }}</button>
+    </div>
+</div>
 {{ form_end(form) }}
