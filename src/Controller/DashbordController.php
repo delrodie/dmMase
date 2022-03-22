@@ -59,7 +59,7 @@ class DashbordController extends AbstractController
 	 * @Route("/oauth2callback", name="backend_analytics", methods={"GET"})
 	 * @throws \Google\Exception
 	 */
-	public function oauth2callback()
+	public function oauth2callback(): \Symfony\Component\HttpFoundation\RedirectResponse
 	{
 		//session_start();
 
@@ -75,15 +75,16 @@ class DashbordController extends AbstractController
 					$auth_url = $client->createAuthUrl();
 					header('Location: ' . filter_var($auth_url, FILTER_SANITIZE_URL));
 					
-					return $this->redirect($auth_url);
+					//return $this->redirect($auth_url);
 				} else {
 					$client->authenticate($_GET['code']);
 					$_SESSION['access_token'] = $client->getAccessToken();
 					$redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/';
 					header('Location: ' . filter_var($redirect_uri, FILTER_SANITIZE_URL));
 					
-					return $this->redirect($redirect_uri);
+					//return $this->redirect($redirect_uri);
 				}
+				return $this->redirectToRoute('app_home');
 	}
 	
 	/**
