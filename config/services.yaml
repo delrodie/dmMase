@@ -42,3 +42,7 @@ services:
             $documentDirectory: '%kernel.project_dir%/public/uploads/documents'
             $portraitDirectory: '%kernel.project_dir%/public/uploads/portrait'
             $entrepriseDirectory: '%kernel.project_dir%/public/uploads/entreprise'
+
+    App\Utilities\Analytics:
+        arguments:
+            $fichierDir: '%kernel.project_dir%/public/analytics/code_secret_client.json'
