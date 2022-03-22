@@ -46,14 +46,14 @@ class DashbordController extends AbstractController
 			)]
 		]);
 		
-		print 'Report result: '. PHP_EOL;
+		//print 'Report result: '. PHP_EOL;
 		
 		foreach ($response->getRows() as $row){ //dd($row);
 			$resultats =  $row->getDimensionValues()[0]->getValue()
 				. ' '.$row->getMetricsValues()[0]->getValue() . PHP_EOL;
 		}
 		
-		dd($response->getRowCount());
+		//dd($response->getRowCount());
         return $this->render('dashbord/index.html.twig', [
             'aujourdhui' => date('Y-m-d', time()),
         ]);
