@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "dreammaker-344914",
+  "private_key_id": "f9dcdd78e6d575d22d11c93710b4572367434e25",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCfGiwP+s2NhSVF\n93ygIP0hsQLPH4OJZMSNziderMR0iG1WDvxNt6nSFMvQC+RSzjEXnDIn8wCvu74o\nDysOQKDBE5iqMhgUgFGsyIHuUAVBO3mLwAEGEWvi3PFD/du8eDc6hBcAoM6SohQt\nTgb0c4NYCxmxPgtlMFvTthVuvBq0qMDPjmUZirUNlj4qsoF+/4pHrwS6z0cmTqXW\nt+r4C1IpxjO5sFqL11IfySxfa4B/MJKVryNm+1ex7l2+YBu6veo2Wre2EqiTZY5A\nFDEbRRKvBOraL995Od+nvUmzFIkvfbgazJkbSf+8vSowwfdIksclsdKunqbP8+5b\nSQiK4twXAgMBAAECgf8T+kn5daGLchflWnyaEmERancU/olQDe/qpKF+d4W/8u3o\nu0uP8oxT+e2uLeCahTDF61cGGIFkyWPpzRaOjm3jGumIQ+MMfmsuY93syHpUDUjv\nolGG2MHxMllrwLKADIfKBuTMAfnNTrYIVSLUwKQs6f4aNv6q675JeDzuZHZx3dY3\nn9MCd18nBGeoU4Z2aIEHlG2Hr5E3TMIHwGZ4qOLduGgmCV+hQNe9r2t3EWv5byjz\n8yC0xZqEEfLhSV+Xq23Ooa2OgbhhGnCFB5aNj7rh0p9SZLNh2NSLxHCRYkblbmal\nJkqnFGCOzN3GrGM1Mk+fIV8Cct8RXLJiv/JwpC0CgYEA2iOjgVEX+Ta3a9VHvJT/\nFGjUlnJzRbRJQxnxOieH1f550UGnpWQKTJHDIKjD4r1rjPx/qguxx5ftFLqXXpT7\nq2upHIm5WLsQMqZ9eZGLbZMRrG8brSELK7/Bh7VlZy5/MiuCzdNbnQzNnjkGahfe\ngN3cZ/7VHZdZdvRqIXCpaSUCgYEAurdnBs+C1f8wccLQM6ZTMQC9GQRGbBHX3Xmm\nXFFic74qva80NEdquARcHH/GciG2ViLH0J37LsHKNHl/C7GuzrYshcO7rscdIG7u\nnhbbOo9kPmw8/g3xqr1U4yiT+yo9BghygK91qYZRYye2pu1ek8VpECvkLJsQM8pU\nnB4lIYsCgYEA2eZJuK6BzQ7MMCova4BGQWPqH5KZ9SH/IMk0Pwwn0ypNEyuLRFnn\nM89S5DfQ3Jisa3v6Jqlh3+eyCkfNVsxpjTWRCxHEFI9fwcivhBVP+pezStT+B3X/\ni6cTsfUQIv6+TiZKlkGvvPSCHLAH6UiImZ+FQFi9F78MvheuQFMi1wUCgYAcZuOM\nHKqpRK0o0Np80NMcxCD/mi/gJoKwlN2ic1rHgmjb+7e0MBziqv8b8q/MEqa6yYWd\njTp1LVNF0ilqLPgLR5jULCbzeiRLF7TCZXWpncBA4pQQjSxyrWQpPbXs4crwjP5l\n5sq+I8ljjNny4G6ficrmg9asllXLmv5t1QQO6wKBgQC1EC30OeGQdWEVpDN+nQTU\nkTn9Nw56LvroYUUkzcLM26WH3k2oiUFIYtOy1JnqHl35ZPuGx5UZD+JvL55tcp4p\nkwAB7uWxWBedq0nLQ8YuQtCTZfBrVkUXGm2J1dHF6l6IsztGS5XP9CMEvmPSx74P\nstadCl75cowkitnqXulN/Q==\n-----END PRIVATE KEY-----\n",
+  "client_email": "dm-mase@dreammaker-344914.iam.gserviceaccount.com",
+  "client_id": "117933596902513478763",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dm-mase%40dreammaker-344914.iam.gserviceaccount.com"
+}

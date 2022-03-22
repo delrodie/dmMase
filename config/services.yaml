@@ -45,4 +45,5 @@ services:
 
     App\Utilities\Analytics:
         arguments:
-            $fichierDir: '%kernel.project_dir%/public/analytics/code_secret_client.json'
+            $fichierDir: '%kernel.project_dir%/public/analytics/dreammaker-344914-f9dcdd78e6d5.json'
+            $maseDir: '%kernel.project_dir%/public/analytics/dm-mase-quickstart-234722c045a7.json'

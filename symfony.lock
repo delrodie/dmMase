@@ -84,6 +84,60 @@
     "egulias/email-validator": {
         "version": "2.1.24"
     },
+    "google/analytics-data": {
+        "version": "0.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "0.0",
+            "ref": ""
+        }
+    },
+    "google/common-protos": {
+        "version": "0.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "0.0",
+            "ref": ""
+        }
+    },
+    "google/gax": {
+        "version": "0.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "0.0",
+            "ref": ""
+        }
+    },
+    "google/grpc-gcp": {
+        "version": "0.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "0.0",
+            "ref": ""
+        }
+    },
+    "google/protobuf": {
+        "version": "0.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "0.0",
+            "ref": ""
+        }
+    },
+    "grpc/grpc": {
+        "version": "0.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "0.0",
+            "ref": ""
+        }
+    },
     "monolog/monolog": {
         "version": "2.2.0"
     },
