@@ -78,6 +78,16 @@ class Entreprise
      */
     private $logo;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $rc;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $cc;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -219,9 +229,9 @@ class Entreprise
 	 * @ORM\PrePersist
 	 */
 	public function setCreatedAtValue(): \DateTime
-         	{
-         		return $this->createdAt = new \DateTime();
-         	}
+                           	{
+                           		return $this->createdAt = new \DateTime();
+                           	}
 
     public function getLogo(): ?string
     {
@@ -231,6 +241,30 @@ class Entreprise
     public function setLogo(?string $logo): self
     {
         $this->logo = $logo;
+
+        return $this;
+    }
+
+    public function getRc(): ?string
+    {
+        return $this->rc;
+    }
+
+    public function setRc(?string $rc): self
+    {
+        $this->rc = $rc;
+
+        return $this;
+    }
+
+    public function getCc(): ?string
+    {
+        return $this->cc;
+    }
+
+    public function setCc(?string $cc): self
+    {
+        $this->cc = $cc;
 
         return $this;
     }

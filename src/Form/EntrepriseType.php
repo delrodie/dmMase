@@ -23,6 +23,14 @@ class EntrepriseType extends AbstractType
 				'attr'=>['class'=>'form-control', 'autocomplete'=>"off"],
 	            'label' => "Siège"
             ])
+            ->add('rc', TextType::class,[
+				'attr'=>['class'=>'form-control', 'autocomplete'=>"off"],
+	            'label' => "Registre de commerce"
+            ])
+            ->add('cc', TextType::class,[
+				'attr'=>['class'=>'form-control', 'autocomplete'=>"off"],
+	            'label' => "Compte contribuable"
+            ])
             ->add('adresse', TextType::class,[
 				'attr'=>['class'=>'form-control', 'autocomplete'=>"off"]
             ])
