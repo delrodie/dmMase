@@ -13,8 +13,8 @@
                     </div>
                 </div>
 
-                <div class="card card-dashboard-twelve mg-b-20">
-                    <a href="{{ path('backend_analytics_helloanalytics') }}">Satats</a>
+                <div class="card card-dashboard-twelve mg-b-20 text-center" style="padding: 50px; text-align:center; font-weight:bold; font-size: 1.5rem;">
+                    <a href="{{ path('backend_analytics_helloanalytics') }}">Voir les statistiques</a>
                 </div>
 
                 <div class="row row-sm mg-b-20">
@@ -51,45 +51,4 @@
 
     </div>
 {% endblock %}
-{% block javascripts%}
-    {{ parent()}}
-    <script>
-        // Replace with your view ID.
-        var VIEW_ID = '306928198';
 
-        // Query the API and print the results to the page.
-        function queryReports() {
-            gapi.client.request({
-                path: '/v4/reports:batchGet',
-                root: 'https://analyticsreporting.googleapis.com/',
-                method: 'POST',
-                body: {
-                    reportRequests: [
-                        {
-                            viewId: VIEW_ID,
-                            dateRanges: [
-                                {
-                                    startDate: '7daysAgo',
-                                    endDate: 'today'
-                                }
-                            ],
-                            metrics: [
-                                {
-                                    expression: 'ga:sessions'
-                                }
-                            ]
-                        }
-                    ]
-                }
-            }).then(displayResults, console.error.bind(console));
-        }
-
-        function displayResults(response) {
-            var formattedJson = JSON.stringify(response.result, null, 2);
-            document.getElementById('query-output').value = formattedJson;
-        }
-    </script>
-
-    <!-- Load the JavaScript API client and Sign-in library. -->
-    <script src="https://apis.google.com/js/client:platform.js"></script>
-{% endblock %}

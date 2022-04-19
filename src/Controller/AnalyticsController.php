@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Utilities\Analytics;
+use App\Utilities\GoogleReports;
 use Google_Client;
 use Google_Service_AnalyticsReporting;
 use Google_Service_AnalyticsReporting_DateRange;
@@ -20,10 +21,12 @@ class AnalyticsController extends AbstractController
 {
 	
 	private $analytics;
+	private $googleReports;
 	
-	public function __construct(Analytics $analytics)
+	public function __construct(Analytics $analytics, GoogleReports $googleReports)
 	{
 		$this->analytics = $analytics;
+		$this->googleReports = $googleReports;
 	}
 	
     /**
@@ -32,12 +35,65 @@ class AnalyticsController extends AbstractController
     public function index(): Response
     {
 		$analytics = $this->initializeAnalytics(); //dd($analytics);
-	    $response = $this->getReport($analytics);
-	    //$this->printResults($response);
+	    $response = $this->getReport($analytics, '2022-04-01', '2022-04-19'); //dd($this->printResults($response));
+	    
         return $this->render('analytics/index.html.twig', [
-            'controller_name' => $this->printResults($response),
+	        'aujourdhui' => date('Y-m-d', time()),
+            'mois_encours' => $this->moisEncours($analytics),
+	        'annee_encours' => $this->anneEncours($analytics)
         ]);
     }
+	
+	function moisEncours($analytics)
+	{
+		$aujourdui = date('d') + 1;
+		
+		for ($i=1; $i < $aujourdui; $i++){ //dd(date('d'));
+			if ($i < 10) $variable = '0'.$i;
+			else $variable = $i;
+			$jour_suivant = date('Y-m-').$variable;
+			
+			$datas = $this->printResults($this->getReport($analytics, $jour_suivant, $jour_suivant)); //dd($datas);
+			$res=0;
+			if (is_array($datas) || is_object($datas)){
+				foreach ($datas as $data => $val)  {
+					$res = $val;
+				};
+			}
+			$resultat[$i] = [
+				'date' => $jour_suivant,
+				'valeur' => $res,
+			];
+		}
+		//dd($resultat);
+		return $resultat;
+	}
+	
+	function anneEncours($analytics)
+	{
+		for ($i=1; $i < 13; $i++){ //dd(date('d'));
+			if ($i < 10) $variable = '0'.$i;
+			else $variable = $i;
+			$mois_debut = date('Y-').$variable.date('-01');
+			if ($variable === '02') $mois_fin = date('Y-').$variable.date('-28');
+			else  $mois_fin = date('Y-').$variable.date('-30');
+			
+			
+			$datas = $this->printResults($this->getReport($analytics, $mois_debut, $mois_fin)); //dd($datas);
+			$res=0;
+			if (is_array($datas) || is_object($datas)){
+				foreach ($datas as $data => $val)  {
+					$res = $val;
+				};
+			}
+			$resultat[$i] = [
+				'date' => $variable,
+				'valeur' => $res,
+			];
+		}
+		//dd($resultat);
+		return $resultat;
+	}
 	
 	
 	/**
@@ -67,7 +123,7 @@ class AnalyticsController extends AbstractController
 	 * @param $analytics
 	 * @return mixed
 	 */
-	function getReport($analytics) {
+	function getReport($analytics, $debut, $fin) {
 		
 		// Replace with your view ID, for example XXXX.
 		//$VIEW_ID = "UA-223589877-1";
@@ -75,8 +131,8 @@ class AnalyticsController extends AbstractController
 		
 		// Create the DateRange object.
 		$dateRange = new Google_Service_AnalyticsReporting_DateRange();
-		$dateRange->setStartDate("7daysAgo");
-		$dateRange->setEndDate("today");
+		$dateRange->setStartDate($debut);
+		$dateRange->setEndDate($fin);
 		
 		// Create the Metrics object.
 		$sessions = new Google_Service_AnalyticsReporting_Metric();
@@ -101,6 +157,7 @@ class AnalyticsController extends AbstractController
 	 * @return void
 	 */
 	function printResults($reports) { //dd($reports);
+		$values=0;
 		for ( $reportIndex = 0; $reportIndex < count( $reports ); $reportIndex++ ) {
 			$report = $reports[ $reportIndex ];
 			$header = $report->getColumnHeader();
@@ -111,19 +168,21 @@ class AnalyticsController extends AbstractController
 			for ( $rowIndex = 0; $rowIndex < count($rows); $rowIndex++) {
 				$row = $rows[ $rowIndex ];
 				$dimensions = $row->getDimensions();
-				$metrics = $row->getMetrics();
+				$metrics = $row->getMetrics(); //dd($metrics);
 				for ($i = 0; $i < ($dimensionHeaders === null ? 0 : count($dimensionHeaders)) && $i < count($dimensions); $i++) {
 					print($dimensionHeaders[$i] . ": " . $dimensions[$i] . "\n");
 				}
 				
 				for ($j = 0; $j < count($metrics); $j++) {
-					$values = $metrics[$j]->getValues();
+					$values = $metrics[$j]->getValues(); //dd($values);
 					for ($k = 0; $k < count($values); $k++) {
-						$entry = $metricHeaders[$k];
-						print($entry->getName() . ": " . $values[$k] . "\n");
+						$entry = $metricHeaders[$k]; //dd($entry);
+						//print($entry->getName() . ": " . $values[$k] . "\n");
 					}
 				}
 			}
 		}
+		
+		return $values;
 	}
 }

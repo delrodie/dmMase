@@ -1,20 +1,130 @@
 {% extends 'backend_layout.html.twig' %}
 
-{% block title %}Hello AnalyticsController!{% endblock %}
+{% block title %}Tableau de bord{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<div class="az-content az-content-dashboard-four">
+		<div class="media media-dashboard">
+			<div class="media-body">
+				<div class="az-content-header">
+					<div>
+						<h6 class="az-content-title tx-18 mg-b-5">Tableau de bord </h6>
+						<p class="az-content-text tx-13 mg-b-0">Statistiques des trafics sur le site.</p>
+					</div>
+				</div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+				<div class="card card-dashboard-twelve mg-b-20">
+					<div class="row justify-content-center align-content-center text-center">
+						<div class="col">
+							<div class="card">
+								<div class="card-header">Total connectés du mois</div>
+								<div class="card-body">
+									{% set nombre = 0 %}
+									{% for mois in mois_encours %} {% set nombre = mois.valeur + nombre %}{% endfor%}
+									<h4>{{ nombre }}</h4>
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="card">
+								<div class="card-header">Total connectés de l'année</div>
+								<div class="card-body">
+									{% set connecte=0 %}
+									{% for annee in annee_encours %} {% set connecte = connecte + annee.valeur %} {% endfor %}
+									<h4>{{ connecte }}</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/delrodie/www/backoffice/dreammaker/mase/src/Controller/AnalyticsController.php'|file_link(0) }}">src/Controller/AnalyticsController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/delrodie/www/backoffice/dreammaker/mase/templates/analytics/index.html.twig'|file_link(0) }}">templates/analytics/index.html.twig</a></code></li>
-    </ul>
-</div>
+				<div class="row row-sm mg-b-20">
+					<div class="col-md-12 mb-5">
+						<canvas id="moisEncours" ></canvas>
+					</div><!-- col -->
+					<div class="col-md-12 mg-t-20 mg-md-t-0">
+						<canvas id="anneeEncours" ></canvas>
+					</div><!-- col -->
+				</div><!-- row -->
+
+			</div><!-- media-body -->
+
+			<div class="media-aside">
+				<div class="row row-sm">
+					<div class="col-md-6 col-lg-4 col-xl-12">
+						<div class="card card-dashboard-calendar">
+							<h6 class="card-title">Calendrier</h6>
+							<div class="media az-media-date">
+								<h1>{{ aujourdhui|date('d', "Europe/Paris") }}</h1>
+								<div class="media-body">
+									<p>{{ aujourdhui|date('M', "Europe/Paris") }} {{ aujourdhui|date('Y') }}</p>
+									<span>{{ aujourdhui|date('D', "Europe/Paris") }}</span>
+								</div>
+							</div>
+							<div class="card-body"><div class="fc-datepicker"></div></div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-8 col-xl-12 mg-t-20 mg-md-t-0 mg-xl-t-20">
+					</div>
+				</div><!-- row -->
+			</div><!-- media-aside -->
+		</div><!-- media -->
+
+	</div>
+{% endblock %}
+{% block javascripts%}
+	{{ parent()}}
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+	<script>
+        const ctx = document.getElementById('moisEncours').getContext('2d');
+        const atx = document.getElementById('anneeEncours').getContext('2d');
+        const myLine = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [{% for mois in mois_encours %}'{{ mois.date}}', {% endfor%}],
+                datasets: [{
+                    label: '# connexion mois encours',
+                    data: [{% for mois in mois_encours%} {{ mois.valeur}}, {%endfor%}],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        const myChart = new Chart(atx, {
+            type: 'bar',
+            data: {
+                labels: [{% for annee in annee_encours %}'{{ annee.date}}', {% endfor%}],
+                datasets: [{
+                    label: '# connexion année encours',
+                    data: [{% for annee in annee_encours%} {{ annee.valeur}}, {%endfor%}],
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+	</script>
 {% endblock %}

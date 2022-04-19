@@ -7,6 +7,7 @@ use Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
 use Google\Analytics\Data\V1beta\DateRange;
 use Google\Analytics\Data\V1beta\Dimension;
 use Google\Analytics\Data\V1beta\Metric;
+use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,7 +30,7 @@ class DashbordController extends AbstractController
 	 */
     public function index(): Response
     {
-		putenv('GOOGLE_APPLICATION_CREDENTIALS='.$this->analytics->maseGA4());
+		/*putenv('GOOGLE_APPLICATION_CREDENTIALS='.$this->analytics->maseGA4());
 		$property_id = '307925646';
 		$client = new BetaAnalyticsDataClient(); //dd($client);
 		
@@ -39,11 +40,10 @@ class DashbordController extends AbstractController
 				new DateRange([
 					'start_date' => '2021-01-01',
 					'end_date' => 'today'
-				])
+				]),
 			],
-			'dimensions' => [new Dimension(
-				['name' => 'city']
-			)]
+			'dimensions' => [new Dimension(['name'=>'city']),],
+			'metrics' => []
 		]);
 		
 		//print 'Report result: '. PHP_EOL;
@@ -52,11 +52,14 @@ class DashbordController extends AbstractController
 			$resultats =  $row->getDimensionValues()[0]->getValue()
 				. ' '.$row->getMetricsValues()[0]->getValue() . PHP_EOL;
 		}
-		
-		//dd($response->getRowCount());
+		//dd($resultats);
+		//dd($response->getRowCount());*/
         return $this->render('dashbord/index.html.twig', [
             'aujourdhui' => date('Y-m-d', time()),
+	        //'resultats' => $resultats
         ]);
+	    
+	    //return $this->redirectToRoute('backend_analytics_helloanalytics');
     }
 	
 }
