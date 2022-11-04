@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adhésion{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12 adhesion">
+            <h1>Adhésion</h1>
+            <h5>
+                Vous êtes une entreprise utilisatrice ou entréprise intervenante? Veuillez choisir votre
+                statut pour pouvoir procéder à votre adhesion.
+            </h5>
+        </div>
+    </div>
+    <div class="row images">
+        <div class="col-md-6 mt-3">
+            <a href="{{ absolute_url(path('frontend_adhesion_eu_formulaire')) }}">
+                <img src="{{ absolute_url(asset('ressources/images/adhesion_EU.png')) }}" alt="Adhesion Entreprise Utilisatrice">
+                <h3>Entreprise Utilisatrice</h3>
+            </a>
+        </div>
+        <div class="col-md-6 mt-3">
+            <a href="{{ absolute_url(path('frontend_adhesion_ei_formulaire')) }}">
+                <img src="{{ absolute_url(asset('ressources/images/adhesion_EI.png')) }}" alt="Adhesion Entreprise intervenante">
+                <h3>Entreprise Intervenante</h3>
+            </a>
+        </div>
+    </div>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .adhesion h1{
+            font-weight: bold;
+            color: darkgreen;
+            text-transform: uppercase;
+            text-decoration: underline;
+        }
+        .adhesion p{
+            font-size: 1.2rem;
+        }
+        .images{
+            text-align: center;
+            margin: 50px auto;
+        }
+        .images img{
+            max-width: 350px;
+            min-width: 200px;
+        }
+    </style>
+{% endblock %}

@@ -2,8 +2,17 @@
 {% block title %} Qui sommes-nous? {% endblock %}
 {% block body %}
     <div class="row">
+        <div class="col-md-8 col-sm-12">
+            <article class="post-detail">
+                <h1>{{  article.titre }}</h1>
+                <p class="text-justify">
+                    {{ article.contenu|raw }}
+                </p>
+
+            </article>
+
+        </div>
         <div class="col-md-4 col-sm-12">
-            {{ include('frontend/presentation_include.html.twig') }}
 
             <!-- Agenda -->
             {% if agendas %}
@@ -43,16 +52,6 @@
                     </div>
                 </div>
             {% endif %}
-        </div>
-        <div class="col-md-8 col-sm-12">
-            <article class="post-detail">
-                <h1>{{  article.titre }}</h1>
-                <p class="text-justify">
-                    {{ article.contenu|raw }}
-                </p>
-
-            </article>
-
         </div>
     </div>
 {% endblock %}

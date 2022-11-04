@@ -178,39 +178,19 @@
                             <a href="{{ absolute_url(path('app_home'))}}"><i class="fa fa-home fa-lg"></i> </a>
                         </li>
 
-                        <li class="mega">
+                        <li>
                             <a href="#">L'association<span></span></a>
-                            <div class="mega-menu">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <ul class="submenu2">
-                                            <li><a href="{{ absolute_url(path('frontend_presentation', {'slug': 'presentation'}) ) }}">Qui sommes-nous?</a></li>
-                                            <li><a href="{{ absolute_url(path('frontend_presentation', {'slug': 'historique'}) ) }}">Historique</a> </li>
-                                            <li><a href="#">Adhesion</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <ul class="submenu2">
-                                            <li><a href="#">Organigramme</a></li>
-                                            <li><a href="{{ absolute_url(path('frontend_presentation', {'slug': 'conseil-administration'})) }}">Conseil d'administration</a></li>
-                                            <li><a href="{{ absolute_url(path('frontend_presentation', {'slug': 'comite-de-pilotage'})) }}">Comité de pilotage</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <ul class="submenu2">
-                                            <li><a href="{{ absolute_url(path('frontend_presentation', {'slug': 'statut'}) ) }}">Statuts</a></li>
-                                            <li><a href="{{ absolute_url(path('frontend_presentation', {'slug': 'reglement'}) ) }}">Reglement interieur</a></li>
-                                            <li><a href="{{ absolute_url(path('frontend_document_liste') )}}">Document</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            <ul class="submenu">
+                                <li><a href="{{ absolute_url(path('frontend_presentation', {'slug': 'presentation'}) ) }}">Qui sommes-nous?</a></li>
+                                <li><a href="{{ absolute_url(path('frontend_presentation', {'slug': 'conseil-administration'})) }}">Conseil d'administration</a></li>
+                                <li><a href="{{ absolute_url(path('frontend_presentation', {'slug': 'comite-de-pilotage'})) }}">Comité de pilotage</a></li>
+                                <li><a href="{{ absolute_url(path('frontend_adhesion') )}}">Adhesion</a></li>
+                            </ul>
                         </li>
                         <li>
                             <a href="#">Actualités <span></span></a>
                             <ul class="submenu">
                                 <li><a href="{{ absolute_url(path('frontend_actualite_liste') ) }}">Activités</a></li>
-                                <li><a href="#">Bulletin d'informations</a></li>
                             </ul>
                         </li>
                         <li>

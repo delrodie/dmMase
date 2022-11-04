@@ -2,8 +2,29 @@
 {% block title %} Comité de pilotage{% endblock %}
 {% block body %}
     <div class="row">
+        <div class="col-md-8 col-sm-12">
+            <article class="post-detail">
+                <h1>Comité de pilotage</h1>
+                <div class="row">
+                    {% for portrait in portraits %}
+                        <div class="col-md-4 portrait">
+                            {% if portrait.media %}
+                                <img src="{{ absolute_url(asset('uploads/portrait/'~ portrait.media)) }}" alt="">
+                            {% else %}
+                                <img src="{{ absolute_url(asset('backoffice/images/avatar.png')) }}" alt="">
+                            {% endif %}
+                            <div class="text-center">
+                                <h1>{{portrait.nom|upper}} {{ portrait.prenoms|title }}</h1>
+                                <h3>{{ portrait.fonction }}</h3>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </article>
+
+        </div>
         <div class="col-md-4 col-sm-12">
-            {{ include('frontend/presentation_include.html.twig') }}
 
             <!-- Agenda -->
             {% if agendas %}
@@ -43,28 +64,6 @@
                     </div>
                 </div>
             {% endif %}
-        </div>
-        <div class="col-md-8 col-sm-12">
-            <article class="post-detail">
-                <h1>Comité de pilotage</h1>
-                <div class="row">
-                    {% for portrait in portraits %}
-                        <div class="col-md-4 portrait">
-                            {% if portrait.media %}
-                                <img src="{{ absolute_url(asset('uploads/portrait/'~ portrait.media)) }}" alt="">
-                            {% else %}
-                                <img src="{{ absolute_url(asset('backoffice/images/avatar.png')) }}" alt="">
-                            {% endif %}
-                            <div class="text-center">
-                                <h1>{{portrait.nom|upper}} {{ portrait.prenoms|title }}</h1>
-                                <h3>{{ portrait.fonction }}</h3>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-
-            </article>
-
         </div>
     </div>
 {% endblock %}
